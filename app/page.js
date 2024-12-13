@@ -1,3 +1,4 @@
+import AboutUs from "@/components/aboutus";
 import Header from "@/components/Header";
 import ProductShow from "@/components/ProductShow";
 import ProductVideo from "@/components/ProductVideo";
@@ -9,6 +10,7 @@ export default function Home() {
     <Header />
     <ProductShow />
     <ProductVideo/>
+    <AboutUs/>
    </div>
   );
 }
