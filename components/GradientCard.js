@@ -15,7 +15,7 @@ const GradientCard = ({
       className={`relative w-[${containerWidth}] h-[${containerHeight}] rounded-lg bg-black`}
     >
       {/* Gradient Text */}
-      <p className="absolute z-10 left-20 top-28 text-5xl font-normal text-transparent bg-gradient-to-r from-white to-gray-600 bg-clip-text">
+      <p className="absolute z-10 left-48 top-28 text-5xl font-normal text-transparent bg-gradient-to-r from-white to-gray-600 bg-clip-text">
         {title}
       </p>
 
@@ -34,7 +34,7 @@ const GradientCard = ({
       {/* Link Button with Image */}
       <Link
         href={linkHref}
-        className="absolute left-44 bottom-28 flex items-center justify-center w-12 h-12 border-2 border-white rounded-full hover:bg-white hover:text-black transition"
+        className="absolute left-72 bottom-28 flex items-center justify-center w-12 h-12 border-2 border-white rounded-full hover:bg-white hover:text-black transition"
       >
         <Image
           src={imageSrc}

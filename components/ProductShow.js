@@ -35,9 +35,9 @@ const PRODUCTS = [
 
 export default function ProductShow() {
   return (
-    <div className="w-full h-[500px] flex items-center justify-center">
+    <div className="w-full h-[550px] flex items-center justify-center pt-11">
       {/* Section gauche (titre et description) */}
-      <div className="w-[400px] h-full bg-transparent border-r-2 border-black flex flex-col justify-start pt-6 px-6">
+      <div className="w-[400px] h-full bg-transparent border-r-2 border-gray-300 flex flex-col justify-start pt-6 px-6">
         <h2 className="text-black text-2xl font-semibold">PRODUITS</h2>
         <p className="text-black text-sm mt-2">Nos produits de qualité</p>
       </div>
