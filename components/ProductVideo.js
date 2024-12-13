@@ -5,7 +5,7 @@ import GradientCard from "./GradientCard";
 
 export default function ProductVideo() {
   return (
-    <div className="w-full h-[600px] flex items-center justify-center gap-1 border-red-100">
+    <div className="w-full h-[500px] flex items-center justify-center gap-1 border-red-100">
       <GradientCard 
         title="Envoutant"
         videoSrc="/cocojojo.C.mp4"
