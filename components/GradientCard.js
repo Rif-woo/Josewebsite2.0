@@ -3,19 +3,18 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const GradientCard = ({
-  title = 'Envoutant',
-  videoSrc = '/cocojojo-compressed.mp4',
-  linkHref = '/product-details',
-  imageSrc = '/fleche.png',
-  containerWidth = '400px',
-  containerHeight = '600px',
+  title ,
+  videoSrc,
+  linkHref,
+  imageSrc,
+  containerWidth,
 }) => {
   return (
     <div
-      className={`relative w-[${containerWidth}] h-[${containerHeight}] rounded-lg bg-black`}
+      className={`relative w-[${containerWidth}] h-full rounded-lg bg-black`}
     >
       {/* Gradient Text */}
-      <p className="absolute z-10 left-48 top-28 text-5xl font-normal text-transparent bg-gradient-to-r from-white to-gray-600 bg-clip-text">
+      <p className="absolute z-10 left-20 top-28 text-5xl font-normal text-transparent bg-gradient-to-r from-white to-gray-600 bg-clip-text">
         {title}
       </p>
 
@@ -34,7 +33,7 @@ const GradientCard = ({
       {/* Link Button with Image */}
       <Link
         href={linkHref}
-        className="absolute left-72 bottom-28 flex items-center justify-center w-12 h-12 border-2 border-white rounded-full hover:bg-white hover:text-black transition"
+        className="absolute left-40 bottom-28 flex items-center justify-center w-24 h-12 border-2 border-white rounded-full hover:bg-white hover:text-black transition"
       >
         <Image
           src={imageSrc}

@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function AboutUs() {
   return (
     <div className="flex items-center justify-center h-[900px]">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-36 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-start">
         {/* Image Section */}
         <div className="relative w-[800px] sm:h-[800px]">
           <Image
