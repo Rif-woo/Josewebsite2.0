@@ -1,5 +1,5 @@
 .embla {
-  --slide-spacing: 0rem;
+  --slide-spacing: 1rem; /* Ajout d'espacement entre les slides */
 }
 
 .embla__viewport {
@@ -12,11 +12,10 @@
   display: flex;
   gap: var(--slide-spacing);
   margin-left: calc(var(--slide-spacing) * -1);
-
 }
 
 .embla__slide {
-  flex: 0 0 25%; /* Chaque slide prend 30% de la largeur */
+  flex: 0 0 100%; /* Par défaut : 1 slide par ligne */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,22 +24,27 @@
   box-sizing: border-box;
   border-right: 1px solid white;
 }
-/* 
-.embla__slide:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s ease;
-} */
 
-/* .product-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 1rem;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-} */
+/* Responsive pour les tablettes */
+@media (min-width: 640px) {
+  .embla__slide {
+    flex: 0 0 50%; /* 2 slides visibles */
+  }
+}
+
+/* Responsive pour les écrans moyens (tablettes larges, petits desktops) */
+@media (min-width: 768px) {
+  .embla__slide {
+    flex: 0 0 33.33%; /* 3 slides visibles */
+  }
+}
+
+/* Responsive pour les grands écrans */
+@media (min-width: 1024px) {
+  .embla__slide {
+    flex: 0 0 25%; /* 4 slides visibles */
+  }
+}
 
 .product-image {
   width: 100%;
