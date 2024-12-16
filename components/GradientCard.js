@@ -12,9 +12,9 @@ export const GradientCard = ({ title, videoSrc, modalContent, containerWidth }) 
         className={`relative w-full md:w-[${containerWidth}] h-[300px] md:h-[600px] rounded-lg bg-black`}
       >
         {/* Gradient Text */}
-        <p className="absolute z-10 left-6 md:left-10 top-6 md:top-16 text-3xl md:text-4xl font-normal text-transparent bg-gradient-to-r from-white to-gray-600 bg-clip-text">
-          {title}
-        </p>
+        <p className="absolute z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl md:text-4xl font-normal text-transparent bg-gradient-to-r from-white to-gray-600 bg-clip-text">
+  {title}
+</p>
 
         {/* Background Video */}
         <video
