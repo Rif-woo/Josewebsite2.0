@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { GradientCard } from "./GradientCard";
 import Image from "next/image";
 
-
 export default function ProductVideo() {
   return (
     <div className="w-full flex flex-col items-center justify-center px-4 md:px-10 gap-6 mt-16 mb-16">
@@ -20,13 +19,13 @@ export default function ProductVideo() {
           videoSrc="/cocojojo.C.mp4"
           containerWidth="400px"
           modalContent={
-            <div className="flex gap-4 items-center">
+            <div className="flex flex-col sm:flex-row sm:gap-4 items-center sm:items-start w-full max-w-lg sm:max-w-xl mx-auto">
               <Image
                 src="/coco.webp"
                 alt="Coco Jojo"
                 width={300}
                 height={300}
-                className="rounded-lg"
+                className="rounded-lg mb-4 sm:mb-0"
               />
               <div className="w-full">
                 <h3 className="text-2xl font-medium text-black">Coco Jojo</h3>
@@ -34,19 +33,26 @@ export default function ProductVideo() {
                   Parfum doux et floral, idéal pour toutes les occasions.
                 </p>
                 <button
-              className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-sm font-bold rounded hover:bg-gray-200"
-              onClick={() => addToCart(product)}
-            >
-              <div className="relative w-5 h-5">
-                <Image
-                  src="/shopping-cart.svg"
-                  alt="Shopping Cart Icon"
-                  fill
-                  objectFit="contain"
-                  draggable="false"
-                />
-              </div>
-            </button>
+                  className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-sm font-bold rounded hover:bg-gray-200"
+                  onClick={() =>  {
+                    const message = `Coco Jojo (x1): 5000fcfa`;
+                    const encodedMessage = encodeURIComponent(
+                      `Voici ma commande :\n${message}`
+                    );
+                    const whatsappUrl = `https://api.whatsapp.com/send?phone=774197981&text=${encodedMessage}`;
+                    window.open(whatsappUrl, "_blank");
+                  }}
+                >
+                  <div className="relative w-5 h-5">
+                    <Image
+                      src="/shopping-cart.svg"
+                      alt="Shopping Cart Icon"
+                      fill
+                      objectFit="contain"
+                      draggable="false"
+                    />
+                  </div>
+                </button>
               </div>
             </div>
           }
@@ -58,17 +64,24 @@ export default function ProductVideo() {
           videoSrc="/Favor.mp4"
           containerWidth="400px"
           modalContent={
-            <div className="text-center">
-              <h3 className="text-2xl font-medium text-black">Offre Spéciale</h3>
-              <p className="text-gray-600 my-4">
-                Profitez de nos réductions exceptionnelles sur vos parfums
-                préférés.
+            <div className="text-center w-full max-w-lg mx-auto">
+             <div className="flex flex-col items-center">
+                <Image src="/offre-speciale.png" alt="Offre Spéciale" width={100} height={100} />
+                <h3 className="text-2xl font-medium text-black">Offre Spéciale</h3>
+              </div>
+              <p className="text-gray-600 my-4 text-xl">
+                Profitez de nos réductions exceptionnelles sur vos parfums préférés.
               </p>
               <button
                 className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
-                onClick={() =>
-                  window.open("https://api.whatsapp.com/send?phone=774197981")
-                }
+                onClick={() =>  {
+                  const message = `Offre speciale (x1)`;
+                  const encodedMessage = encodeURIComponent(
+                    `Voici ma commande :\n${message}`
+                  );
+                  const whatsappUrl = `https://api.whatsapp.com/send?phone=774197981&text=${encodedMessage}`;
+                  window.open(whatsappUrl, "_blank");
+                }}
               >
                 Commander sur WhatsApp
               </button>
@@ -82,13 +95,13 @@ export default function ProductVideo() {
           videoSrc="/Mighty.mp4"
           containerWidth="400px"
           modalContent={
-            <div className="flex gap-4 items-center">
+            <div className="flex flex-col sm:flex-row sm:gap-4 items-center sm:items-start w-full max-w-lg sm:max-w-xl mx-auto">
               <Image
                 src="/Mighty.webp"
                 alt="Mighty"
                 width={300}
                 height={300}
-                className="rounded-lg"
+                className="rounded-lg mb-4 sm:mb-0"
               />
               <div>
                 <h3 className="text-2xl font-medium text-black">Mighty</h3>
@@ -96,19 +109,26 @@ export default function ProductVideo() {
                   Une fragrance puissante pour les moments inoubliables.
                 </p>
                 <button
-              className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-sm font-bold rounded hover:bg-gray-200"
-              onClick={() => addToCart(product)}
-            >
-              <div className="relative w-5 h-5">
-                <Image
-                  src="/shopping-cart.svg"
-                  alt="Shopping Cart Icon"
-                  fill
-                  objectFit="contain"
-                  draggable="false"
-                />
-              </div>
-            </button>
+                  className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-sm font-bold rounded hover:bg-gray-200"
+                  onClick={() =>  {
+                    const message = `Mighty (x1): 5000fcfa`;
+                    const encodedMessage = encodeURIComponent(
+                      `Voici ma commande :\n${message}`
+                    );
+                    const whatsappUrl = `https://api.whatsapp.com/send?phone=774197981&text=${encodedMessage}`;
+                    window.open(whatsappUrl, "_blank");
+                  }}
+                >
+                  <div className="relative w-5 h-5">
+                    <Image
+                      src="/shopping-cart.svg"
+                      alt="Shopping Cart Icon"
+                      fill
+                      objectFit="contain"
+                      draggable="false"
+                    />
+                  </div>
+                </button>
               </div>
             </div>
           }
@@ -117,5 +137,3 @@ export default function ProductVideo() {
     </div>
   );
 }
-
-
