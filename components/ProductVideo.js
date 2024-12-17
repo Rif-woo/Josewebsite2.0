@@ -23,7 +23,7 @@ export default function ProductVideo() {
         <GradientCard
           title="Tendances"
           videoSrc="/cocojojo.C.mp4"
-          containerWidth="400px"
+          containerWidth="200px"
           modalContent={
             <div className="flex flex-col sm:flex-row sm:gap-4 items-center sm:items-start w-full max-w-lg sm:max-w-xl mx-auto">
               <Image
@@ -68,7 +68,7 @@ export default function ProductVideo() {
         <GradientCard
           title="Offres Spéciales"
           videoSrc="/Favor.mp4"
-          containerWidth="400px"
+          containerWidth="200px"
           modalContent={
             <div className="text-center w-full max-w-lg mx-auto">
              <div className="flex flex-col items-center">
@@ -99,7 +99,7 @@ export default function ProductVideo() {
         <GradientCard
           title="Envoutant"
           videoSrc="/Mighty.mp4"
-          containerWidth="400px"
+          containerWidth="200px"
           modalContent={
             <div className="flex flex-col sm:flex-row sm:gap-4 items-center sm:items-start w-full max-w-lg sm:max-w-xl mx-auto">
               <Image

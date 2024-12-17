@@ -73,7 +73,7 @@ const ProductCarrousel = ({ products, options }) => {
           key={product.id}
         >
           {/* Image du produit */}
-          <div className="w-full h-[200px] sm:h-[300px] md:h-[350px] relative">
+          <div className="w-full h-[300px] sm:h-[300px] md:h-[350px] relative">
             <Image
               src={product.image}
               alt={product.name}
@@ -89,6 +89,9 @@ const ProductCarrousel = ({ products, options }) => {
               <h3 className="text-[#000000] text-sm sm:text-base font-normal">
                 {product.name}
               </h3>
+              <p className="text-[#181818] text-sm sm:text-md font-semibold">
+                {product.typeParfum}
+              </p>
               <p className="text-[#181818] text-sm sm:text-md font-semibold">
                 {product.price}
               </p>

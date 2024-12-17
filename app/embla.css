@@ -11,7 +11,7 @@
 .embla__container {
   display: flex;
   gap: var(--slide-spacing);
-  margin-left: calc(var(--slide-spacing) * -1);
+  margin-left: calc(var(--slide-spacing) * 0.1);
 }
 
 .embla__slide {
