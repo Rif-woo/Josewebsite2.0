@@ -70,7 +70,7 @@ const ProductCarrousel = ({ products, options }) => {
   }, [isModalOpen]);
 
   return (
-    <section className="embla w-full h-full overflow-hidden" id="nos-parfums">
+    <section className="embla w-full h-full overflow-hidden">
       <div className="embla__viewport h-full" ref={emblaRef}>
         <div className="embla__container flex gap-4">
           {products.map((product) => (
