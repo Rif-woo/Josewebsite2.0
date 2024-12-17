@@ -3,8 +3,7 @@ import Image from "next/image";
 export default function AboutUs() {
   return (
     <div
-      className="flex items-center justify-center px-4 md:px-10 py-16"
-      id="AboutUs"
+      className="flex items-center justify-center px-4 md:px-10 py-16" id="Apropos"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10  xl:max-[1515px]:gap-15 md:gap-24 items-center">
         {/* Image Section */}
@@ -22,7 +21,7 @@ export default function AboutUs() {
         {/* Text Section */}
         <div className="text-left w-full max-w-[600px] xl:max-[1515px]:w-[500px]">
           <h2 className="text-transparent bg-gradient-to-r from-gray-600 via-white to-white bg-clip-text xl:max-[1515px]:text-3xl text-4xl md:text-5xl font-medium mb-6 md:mb-10">
-            ABOUT US
+          A propos
           </h2>
           <p className="text-gray-700 text-lg md:text-2xl min-[768px]:max-[1280px]:text-xl xl:max-[1515px]:text-base leading-relaxed">
             Chez <span className="font-semibold">reinoush</span>, nous créons

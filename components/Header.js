@@ -18,10 +18,10 @@ export default function Header() {
           {/* Liens du menu */}
           <li className="z-10">
             <Link
-              href="#AboutUs"
+              href="#Apropos"
               className="text-white text-sm md:text-base xl:max-[1515px]:text-sm z-10"
             >
-              About
+              A propos
             </Link>
           </li>
           <li className="z-10">
@@ -34,7 +34,7 @@ export default function Header() {
           </li>
           <li className="z-10">
             <Link
-              href="#contact"
+              href="#Contact"
               className="text-white xl:max-[1515px]:text-sm text-sm md:text-base z-10"
             >
               Contact
