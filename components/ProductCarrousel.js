@@ -31,15 +31,6 @@ const ProductCarrousel = ({ products, options }) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
   };
 
-  // Gérer les quantités
-  const updateQuantity = (productId, quantity) => {
-    setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.id === productId ? { ...item, quantity } : item
-      )
-    );
-  };
-
   // Envoyer les données du panier via WhatsApp
   const sendToWhatsApp = () => {
     const message = cart
@@ -127,26 +118,26 @@ const ProductCarrousel = ({ products, options }) => {
           }}
         >
           <div
-            className="relative w-[90%] sm:w-[400px] max-h-[90%] text-black bg-[#E6E7F6] shadow-lg p-4 overflow-y-auto rounded-lg"
+            className="relative w-[90%] sm:w-[400px] max-h-[90%] xl:max-[1400px]:w-300px text-black bg-[#E6E7F6] shadow-lg p-4 overflow-y-auto rounded-lg"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Bouton pour fermer le modal */}
             <button
-              className="absolute top-2 right-3 w-6 h-12 text-gray-500 hover:text-gray-800"
+              className="absolute top-2 right-3 w-6 h-6 text-gray-500 hover:text-gray-800"
               onClick={() => setIsModalOpen(false)}
             >
               <Image
                 src="/cancel.svg"
-                alt="Shopping Cart Icon"
-                fill
+                alt="Close Icon"
+                layout="fill"
                 objectFit="contain"
-                draggable="false"
               />
             </button>
 
             <h2 className="text-lg sm:text-3xl font-medium mb-6 text-black">
               Votre Panier
             </h2>
+
             {cart.length === 0 ? (
               <p className="text-sm sm:text-base">Votre panier est vide.</p>
             ) : (
@@ -158,7 +149,7 @@ const ProductCarrousel = ({ products, options }) => {
                   >
                     {/* Image du produit */}
                     <div className="flex items-center gap-2">
-                      <div className="w-12 h-12 sm:w-16 sm:h-16 relative">
+                      <div className="w-12 h-12 relative">
                         <Image
                           src={item.image}
                           alt={item.name}
@@ -169,50 +160,25 @@ const ProductCarrousel = ({ products, options }) => {
                       </div>
                       <span className="text-sm sm:text-base">{item.name}</span>
                     </div>
-
-                    {/* Quantité */}
-                    <div className="flex items-center gap-2">
-                      <button
-                        className="px-2 bg-gray-300 rounded"
-                        onClick={() =>
-                          updateQuantity(
-                            item.id,
-                            Math.max(1, item.quantity - 1)
-                          )
-                        }
-                      >
-                        -
-                      </button>
-                      <span>{item.quantity}</span>
-                      <button
-                        className="px-2 bg-gray-300 rounded"
-                        onClick={() =>
-                          updateQuantity(item.id, item.quantity + 1)
-                        }
-                      >
-                        +
-                      </button>
-                    </div>
-
                     {/* Bouton supprimer */}
                     <button
-                      className="relative w-5 h-12"
+                      className="relative w-5 h-5"
                       onClick={() => removeFromCart(item.id)}
                     >
                       <Image
                         src="/delete.svg"
-                        alt="Shopping Cart Icon"
-                        fill
+                        alt="Delete Icon"
+                        layout="fill"
                         objectFit="contain"
-                        draggable="false"
                       />
                     </button>
                   </li>
                 ))}
               </ul>
             )}
+
             <button
-              className="mt-4 w-full px-4 py-2 bg-green-500 text-black rounded text-sm sm:text-base hover:bg-green-400 hover:text-black"
+              className="mt-4 w-full px-4 py-2 bg-green-500 text-white rounded hover:bg-green-400"
               onClick={sendToWhatsApp}
             >
               Envoyer via WhatsApp

@@ -33,13 +33,13 @@ export default function ProductVideo() {
                 className="rounded-lg mb-4 sm:mb-0"
               />
               <div className="w-full">
-                <h3 className="text-2xl font-medium text-black">Coco Jojo</h3>
-                <p className="text-gray-600 my-4 text-xl">
+                <h3 className="text-2xl font-medium text-black xl:max-[1400px]:text-xl">Coco Jojo</h3>
+                <p className="text-gray-600 my-4 text-xl xl:max-[1400px]:text-lg">
                   Parfum doux et floral, idéal pour toutes les occasions.
                 </p>
                 <button
-                  className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-sm font-bold rounded hover:bg-gray-200"
-                  onClick={() => {
+                  className="flex mt-10 items-center justify-center px-2 py-2 bg-[#181818] text-white text-sm font-bold rounded hover:bg-gray-200"
+                  onClick={() =>  {
                     const message = `Coco Jojo (x1): ${price}`;
                     const encodedMessage = encodeURIComponent(
                       `Voici ma commande :\n${message}`
@@ -48,7 +48,7 @@ export default function ProductVideo() {
                     window.open(whatsappUrl, "_blank");
                   }}
                 >
-                  <div className="relative w-5 h-5">
+                  <div className=" relative w-5 h-5 xl:max-[1400px]:w-4 xl:max-[1400px]:h-4">
                     <Image
                       src="/shopping-cart.svg"
                       alt="Shopping Cart Icon"
@@ -70,24 +70,16 @@ export default function ProductVideo() {
           containerWidth="200px"
           modalContent={
             <div className="text-center w-full max-w-lg mx-auto">
-              <div className="flex flex-col items-center">
-                <Image
-                  src="/offre-speciale.png"
-                  alt="Offre Spéciale"
-                  width={100}
-                  height={100}
-                />
-                <h3 className="text-2xl font-medium text-black">
-                  Offre Spéciale
-                </h3>
+             <div className="flex flex-col items-center">
+                <Image src="/offre-speciale.png" alt="Offre Spéciale" width={100} height={100} />
+                <h3 className="text-2xl xl:max-[1400px]:text-xl font-medium text-black">Offre Spéciale</h3>
               </div>
-              <p className="text-gray-600 my-4 text-xl">
-                Profitez de nos réductions exceptionnelles sur vos parfums
-                préférés.
+              <p className="text-gray-600 my-4 text-xl xl:max-[1400px]:text-lg">
+                Profitez de nos réductions exceptionnelles sur vos parfums préférés.
               </p>
               <button
-                className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
-                onClick={() => {
+                className="bg-green-500 text-white py-2 px-4 xl:max-[1400px]:text-xs rounded hover:bg-green-600"
+                onClick={() =>  {
                   const message = `Offre speciale (x1)`;
                   const encodedMessage = encodeURIComponent(
                     `Voici ma commande :\n${message}`
@@ -117,8 +109,8 @@ export default function ProductVideo() {
                 className="rounded-lg mb-4 sm:mb-0"
               />
               <div>
-                <h3 className="text-2xl font-medium text-black">Mighty</h3>
-                <p className="text-gray-600 my-4 text-xl">
+                <h3 className="text-2xl font-medium text-black xl:max-[1400px]:text-xl">Mighty</h3>
+                <p className="text-gray-600 my-4 text-xl xl:max-[1400px]:text-lg">
                   Une fragrance puissante pour les moments inoubliables.
                 </p>
                 <button
@@ -132,7 +124,7 @@ export default function ProductVideo() {
                     window.open(whatsappUrl, "_blank");
                   }}
                 >
-                  <div className="relative w-5 h-5">
+                  <div className="relative w-5 h-5 xl:max-[1400px]:w-4 xl:max-[1400px]:h-4">
                     <Image
                       src="/shopping-cart.svg"
                       alt="Shopping Cart Icon"
