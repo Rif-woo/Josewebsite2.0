@@ -26,9 +26,26 @@ const ProductCarrousel = ({ products, options }) => {
     setIsModalOpen(true);
   };
 
-  // Supprimer un produit du panier
-  const removeFromCart = (productId) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+  // Incrémenter la quantité
+  const incrementQuantity = (productId) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
+  };
+
+  // Décrémenter la quantité
+  const decrementQuantity = (productId) => {
+    setCart((prevCart) =>
+      prevCart
+        .map((item) =>
+          item.id === productId
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        )
+        .filter((item) => item.quantity > 0) // Supprime l'article si quantité <= 0
+    );
   };
 
   // Envoyer les données du panier via WhatsApp
@@ -39,7 +56,7 @@ const ProductCarrousel = ({ products, options }) => {
     const encodedMessage = encodeURIComponent(
       `Voici ma commande :\n${message}`
     );
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=774197981&text=${encodedMessage}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=+33789080132&text=${encodedMessage}`;
     window.open(whatsappUrl, "_blank");
   };
 
@@ -67,8 +84,8 @@ const ProductCarrousel = ({ products, options }) => {
                 <Image
                   src={product.image}
                   alt={product.name}
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  style={{ objectFit: "cover" }}
                   className="rounded-lg"
                   draggable="false"
                 />
@@ -96,7 +113,7 @@ const ProductCarrousel = ({ products, options }) => {
                       src="/shopping-cart.svg"
                       alt="Shopping Cart Icon"
                       fill
-                      objectFit="contain"
+                      style={{ objectFit: "contain" }}
                       draggable="false"
                     />
                   </div>
@@ -118,19 +135,19 @@ const ProductCarrousel = ({ products, options }) => {
           }}
         >
           <div
-            className="relative w-[90%] sm:w-[400px] max-h-[90%] xl:max-[1400px]:w-300px text-black bg-[#E6E7F6] shadow-lg p-4 overflow-y-auto rounded-lg"
+            className="relative w-[90%] sm:w-[400px] max-h-[90%] text-black bg-[#E6E7F6] shadow-lg p-4 overflow-y-auto rounded-lg"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Bouton pour fermer le modal */}
             <button
-              className="absolute top-2 right-3 w-6 h-6 text-gray-500 hover:text-gray-800"
+              className="absolute top-5 right-3 w-6 h-6 text-gray-500 hover:text-gray-800"
               onClick={() => setIsModalOpen(false)}
             >
               <Image
                 src="/cancel.svg"
                 alt="Close Icon"
-                layout="fill"
-                objectFit="contain"
+                fill
+                style={{ objectFit: "contain" }}
               />
             </button>
 
@@ -147,31 +164,37 @@ const ProductCarrousel = ({ products, options }) => {
                     key={item.id}
                     className="flex items-center justify-between border-b pb-2"
                   >
-                    {/* Image du produit */}
+                    {/* Détails du produit */}
                     <div className="flex items-center gap-2">
                       <div className="w-12 h-12 relative">
                         <Image
                           src={item.image}
                           alt={item.name}
-                          layout="fill"
-                          objectFit="cover"
+                          fill
+                          style={{ objectFit: "cover" }}
                           className="rounded-lg"
                         />
                       </div>
-                      <span className="text-sm sm:text-base">{item.name}</span>
+                      <span className="text-sm sm:text-base">
+                        {item.name} (x{item.quantity})
+                      </span>
                     </div>
-                    {/* Bouton supprimer */}
-                    <button
-                      className="relative w-5 h-5"
-                      onClick={() => removeFromCart(item.id)}
-                    >
-                      <Image
-                        src="/delete.svg"
-                        alt="Delete Icon"
-                        layout="fill"
-                        objectFit="contain"
-                      />
-                    </button>
+
+                    {/* Boutons de gestion */}
+                    <div className="flex gap-2 items-center">
+                      <button
+                        className="text-white bg-green-500 px-2 rounded"
+                        onClick={() => incrementQuantity(item.id)}
+                      >
+                        +
+                      </button>
+                      <button
+                        className="text-white bg-red-500 px-2 rounded"
+                        onClick={() => decrementQuantity(item.id)}
+                      >
+                        -
+                      </button>
+                    </div>
                   </li>
                 ))}
               </ul>

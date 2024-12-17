@@ -1,4 +1,5 @@
 import AboutUs from "@/components/aboutus";
+import ContactSection from "@/components/Contact";
 import Footer from "@/components/footer";
 import Header from "@/components/Header";
 import ProductShow from "@/components/ProductShow";
@@ -12,6 +13,7 @@ export default function Home() {
     <ProductShow />
     <ProductVideo/>
     <AboutUs/>
+    <ContactSection />
     <Footer />
    </div>
   );

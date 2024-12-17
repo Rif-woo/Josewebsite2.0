@@ -12,8 +12,8 @@ export default function AboutUs() {
           <Image
             src="/Favor.webp"
             alt="Parfum Favor"
-            layout="fill"
-            objectFit="cover"
+            fill
+            style={{ objectFit: "cover" }}
             className="rounded-lg"
             draggable="false"
           />

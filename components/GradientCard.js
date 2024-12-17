@@ -6,6 +6,7 @@ import { useState } from "react";
 export const GradientCard = ({
   title,
   videoSrc,
+  videoWebm,
   modalContent,
   containerWidth,
 }) => {
@@ -14,10 +15,10 @@ export const GradientCard = ({
   return (
     <>
       <div
-        className={`relative md:w-[${containerWidth}] h-[300px] xl:max-[1515px]:h-[450px] md:h-[600px] rounded-lg bg-black`}
+        className={`relative md:w-[${containerWidth}] w-full h-[300px] xl:max-[1515px]:h-[450px] md:h-[600px] rounded-lg bg-black`}
       >
         {/* Gradient Text */}
-        <p className="absolute w-full flex justify-center md:w-auto z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl md:text-4xl font-normal text-transparent bg-gradient-to-r from-white to-gray-600 bg-clip-text">
+        <p className="absolute w-full flex justify-center text-center md:w-auto z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl md:text-4xl font-normal text-transparent bg-gradient-to-r from-white to-gray-600 bg-clip-text">
           {title}
         </p>
 
@@ -31,6 +32,7 @@ export const GradientCard = ({
           className="opacity-60 w-full h-full object-cover rounded-lg shadow-lg pointer-events-none"
         >
           <source src={videoSrc} type="video/mp4" />
+          <source src={videoWebm} type="video/webm" />
           Your browser does not support the video tag.
         </video>
 
