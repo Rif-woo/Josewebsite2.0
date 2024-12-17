@@ -20,20 +20,7 @@ export default function Footer() {
         {/* Social Media Links with Next/Image */}
         <div className="flex space-x-4">
           <Link
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src="/snapchat.svg"
-              alt="Facebook"
-              width={32}
-              height={32}
-              className="hover:opacity-80 transition"
-            />
-          </Link>
-          <Link
-            href="https://instagram.com"
+            href="https://www.instagram.com/reinoushh?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -46,13 +33,13 @@ export default function Footer() {
             />
           </Link>
           <Link
-            href="https://twitter.com"
+            href="https://www.tiktok.com/@reiinoush?_t=8qn1qLPRuR4&_r=1"
             target="_blank"
             rel="noopener noreferrer"
           >
             <Image
               src="/tiktok.svg"
-              alt="Twitter"
+              alt="tiktok"
               width={32}
               height={32}
               className="hover:opacity-80 transition"
