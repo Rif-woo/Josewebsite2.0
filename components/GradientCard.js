@@ -9,7 +9,7 @@ export const GradientCard = ({ title, videoSrc, modalContent, containerWidth }) 
   return (
     <>
       <div
-        className={`relative md:w-[${containerWidth}] h-[300px] xl:h-[450px] md:h-[600px] rounded-lg bg-black`}
+        className={`relative md:w-[${containerWidth}] h-[300px] xl:max-[1400px]:h-[450px] md:h-[600px] rounded-lg bg-black`}
       >
         {/* Gradient Text */}
         <p className="absolute w-full flex justify-center md:w-auto z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl md:text-4xl font-normal text-transparent bg-gradient-to-r from-white to-gray-600 bg-clip-text">

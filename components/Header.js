@@ -18,17 +18,17 @@ export default function Header() {
         <ul className="flex items-center justify-between px-4 md:px-10">
           {/* Liens du menu */}
           <li className="z-10">
-            <Link href="#AboutUs" className="text-white text-sm md:text-base xl:text-sm z-10">
+            <Link href="#AboutUs" className="text-white text-sm md:text-base xl:max-[1400px]:text-sm z-10">
               About
             </Link>
           </li>
           <li className="z-10">
-            <Link href="/" className="text-xl md:text-3xl xl:text-xl text-white tracking-wider font-normal z-10">
+            <Link href="/" className="text-xl md:text-3xl xl:max-[1400px]:text-xl text-white tracking-wider font-normal z-10">
               REINOUSH
             </Link>
           </li>
           <li className="z-10">
-            <Link href="#contact" className="text-white xl:text-sm text-sm md:text-base z-10">
+            <Link href="#contact" className="text-white xl:max-[1400px]:text-sm text-sm md:text-base z-10">
               Contact
             </Link>
           </li>
@@ -37,13 +37,13 @@ export default function Header() {
 
       {/* Contenu principal du header */}
       <div className="relative w-full h-full flex flex-col gap-10 xl:gap-12 items-center justify-center px-4 text-center">
-        <h1 className="text-3xl md:text-5xl lg:text-8xl text-white tracking-wide w-full md:w-[1000px] xl:w-[1000px] xl:text-4xl lg:w-[1500px] font-normal z-10">
+        <h1 className="text-3xl md:text-5xl lg:text-8xl text-white tracking-wide w-full md:w-[1000px] xl:max-[1400px]:w-[1000px] xl:max-[1400px]:text-4xl lg:w-[1500px] font-normal z-10">
           Plongez dans l'univers envoûtant de nos parfums
         </h1>
 
         <Link
       href="#nos-parfums" // Remplacez par l'URL cible
-      className="relative inline-block text-center bg-transparent border-2 border-white xl:py-2 xl:px-3 xl:text-sm text-white px-4 md:px-6 py-2 md:py-3 rounded-md z-10
+      className="relative inline-block text-center bg-transparent border-2 border-white xl:max-[1400px]:py-2 xl:max-[1400px]:px-3 xl:max-[1400px]:text-sm text-white px-4 md:px-6 py-2 md:py-3 rounded-md z-10
         hover:bg-white hover:text-black transition-colors duration-300 ease-in-out hover:shadow-lg"
     >
       Découvrir nos parfums

@@ -53,9 +53,9 @@ export default function ProductShow() {
   return (
     <div className="w-full h-[650px] flex flex-col md:flex-row items-center md:items-start justify-center pt-11">
       {/* Section gauche (titre et description) */}
-      <div className="w-[400px] h-[200px] xl:w-[250px] xl:h-[350px] md:h-[450px] bg-transparent md:border-r-2 border-gray-300 flex flex-col justify-center items-center md:items-start md:justify-start pt-6 px-6">
-        <h2 className="text-black text-5xl font-medium md:text-2xl xl:text-xl">PRODUITS</h2>
-        <p className="text-black text-sm xl:text-xs mt-2">Nos produits de qualité</p>
+      <div className="w-[400px] h-[200px] xl:max-[1400px]:w-[250px] xl:max-[1400px]:h-[350px] md:h-[450px] bg-transparent md:border-r-2 border-gray-300 flex flex-col justify-center items-center md:items-start md:justify-start pt-6 px-6">
+        <h2 className="text-black text-5xl font-medium md:text-2xl xl:max-[1400px]:text-xl">PRODUITS</h2>
+        <p className="text-black text-sm xl:max-[1400px]:text-xs mt-2">Nos produits de qualité</p>
       </div>
 
       {/* Carrousel des produits */}

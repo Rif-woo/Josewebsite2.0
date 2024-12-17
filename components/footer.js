@@ -4,13 +4,13 @@ import Link from "next/link";
 // npm run dev -- -H 0.0.0.0
 export default function Footer() {
   return (
-    <footer className="bg-transparent text-gray-800 border-t-2 border-gray-300 py-10 xl:py-5">
+    <footer className="bg-transparent text-gray-800 border-t-2 border-gray-300 py-10 xl:max-[1400px]:py-5">
       {/* Footer Container */}
-      <div className="container mx-auto flex flex-col items-center text-center space-y-6 xl:space-y-4">
+      <div className="container mx-auto flex flex-col items-center text-center space-y-6 xl:max-[1400px]:space-y-4">
         {/* Text */}
         <div>
-          <h2 className="text-2xl font-meidum mb-2 xl:mb-1 xl:text-xl">Nos Parfums</h2>
-          <p className="text-gray-500 xl:text-sm">Élégance, qualité, et passion.</p>
+          <h2 className="text-2xl font-meidum mb-2 xl:max-[1400px]:mb-1 xl:max-[1400px]:text-xl">Nos Parfums</h2>
+          <p className="text-gray-500 xl:max-[1400px]:text-sm">Élégance, qualité, et passion.</p>
         </div>
 
         {/* Social Media Links with Next/Image */}
@@ -46,7 +46,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div>
-          <p className="text-sm xl:text-xs text-gray-500">
+          <p className="text-sm xl:max-[1400px]:text-xs text-gray-500">
             &copy; {new Date().getFullYear()} Nos Parfums. Tous droits réservés.
           </p>
         </div>

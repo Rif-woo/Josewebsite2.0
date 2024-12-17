@@ -69,11 +69,11 @@ const ProductCarrousel = ({ products, options }) => {
       {products.map((product) => (
         <div
           className="embla__slide flex flex-col items-center 
-          min-w-[75%] sm:min-w-[50%] md:min-w-[33.333%] lg:min-w-[25%] xl:min-w-[20%]"
+          min-w-[75%] sm:min-w-[50%] md:min-w-[33.333%] lg:min-w-[25%] xl:max-[1400px]:min-w-[20%]"
           key={product.id}
         >
           {/* Image du produit */}
-          <div className="w-full h-[300px] sm:h-[300px] md:h-[350px] xl:h-[250px] relative">
+          <div className="w-full h-[300px] sm:h-[300px] md:h-[350px] xl:max-[1400px]:h-[250px] relative">
             <Image
               src={product.image}
               alt={product.name}
@@ -86,13 +86,13 @@ const ProductCarrousel = ({ products, options }) => {
           {/* Détails du produit */}
           <div className="flex w-full justify-between items-center mt-4 px-2">
             <div className="flex flex-col gap-1">
-              <h3 className="text-[#000000] text-sm sm:text-base xl:text-sm font-normal">
+              <h3 className="text-[#000000] text-sm sm:text-base xl:max-[1400px]:text-sm font-normal">
                 {product.name}
               </h3>
-              <p className="text-[#181818] text-sm sm:text-md xl:text-xs font-semibold">
+              <p className="text-[#181818] text-sm sm:text-md xl:max-[1400px]:text-xs font-semibold">
                 {product.typeParfum}
               </p>
-              <p className="text-[#181818] text-sm sm:text-md xl:text-xs font-semibold">
+              <p className="text-[#181818] text-sm sm:text-md xl:max-[1400px]:text-xs font-semibold">
                 {product.price}
               </p>
             </div>
@@ -101,7 +101,7 @@ const ProductCarrousel = ({ products, options }) => {
               className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-sm font-bold rounded hover:bg-gray-200"
               onClick={() => addToCart(product)}
             >
-              <div className="relative w-5 h-5 xl:w-4 xl:h-4">
+              <div className="relative w-5 h-5 xl:max-[1400px]:w-4 xl:max-[1400px]:h-4">
                 <Image
                   src="/shopping-cart.svg"
                   alt="Shopping Cart Icon"
