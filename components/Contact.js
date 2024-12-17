@@ -22,7 +22,7 @@ export default function ContactSection() {
 
   return (
     <section className="bg-[#E6E7F6] h-full py-12 px-4 md:px-8" id="Contact">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:max-[1515px]:max-w-5xl gap-8 items-center">
         {/* Colonne gauche */}
         <div>
           <h2 className="text-3xl md:text-4xl font-medium text-transparent bg-gradient-to-r from-gray-600 via-white to-white bg-clip-text mb-4">

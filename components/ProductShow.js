@@ -3,7 +3,6 @@ import ProductCarrousel from "./ProductCarrousel";
 
 const OPTIONS = {}; // Configuration de Embla (ex: { loop: true })
 const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-console.log(timeZone); // Exemple : "Europe/Paris"
 let price = "20 €";
 if (timeZone.includes("Africa")) {
   price = "5000 FCFA";
