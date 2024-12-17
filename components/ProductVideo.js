@@ -1,7 +1,6 @@
 "use client";
-import React, { useState } from "react";
-import { GradientCard } from "./GradientCard";
 import Image from "next/image";
+import { GradientCard } from "./GradientCard";
 
 const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 let price = "20 €";
@@ -11,9 +10,9 @@ if (timeZone.includes("Africa")) {
 
 export default function ProductVideo() {
   return (
-    <div className="w-full flex flex-col items-center justify-center px-4 md:px-10 gap-6 xl:max-[1400px]:mt-5 mt-16 mb-16">
+    <div className="w-full flex flex-col items-center justify-center px-4 md:px-10 gap-6 xl:max-[1515px]:mt-5 mt-16 mb-16">
       {/* Title */}
-      <h2 className="text-black font-medium text-3xl xl:max-[1400px]:text-4xl md:text-5xl text-center pb-6">
+      <h2 className="text-black font-medium text-3xl xl:max-[1515px]:text-4xl md:text-5xl text-center pb-6">
         Sélection du Moment
       </h2>
 
@@ -40,7 +39,7 @@ export default function ProductVideo() {
                 </p>
                 <button
                   className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-sm font-bold rounded hover:bg-gray-200"
-                  onClick={() =>  {
+                  onClick={() => {
                     const message = `Coco Jojo (x1): ${price}`;
                     const encodedMessage = encodeURIComponent(
                       `Voici ma commande :\n${message}`
@@ -71,16 +70,24 @@ export default function ProductVideo() {
           containerWidth="200px"
           modalContent={
             <div className="text-center w-full max-w-lg mx-auto">
-             <div className="flex flex-col items-center">
-                <Image src="/offre-speciale.png" alt="Offre Spéciale" width={100} height={100} />
-                <h3 className="text-2xl font-medium text-black">Offre Spéciale</h3>
+              <div className="flex flex-col items-center">
+                <Image
+                  src="/offre-speciale.png"
+                  alt="Offre Spéciale"
+                  width={100}
+                  height={100}
+                />
+                <h3 className="text-2xl font-medium text-black">
+                  Offre Spéciale
+                </h3>
               </div>
               <p className="text-gray-600 my-4 text-xl">
-                Profitez de nos réductions exceptionnelles sur vos parfums préférés.
+                Profitez de nos réductions exceptionnelles sur vos parfums
+                préférés.
               </p>
               <button
                 className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
-                onClick={() =>  {
+                onClick={() => {
                   const message = `Offre speciale (x1)`;
                   const encodedMessage = encodeURIComponent(
                     `Voici ma commande :\n${message}`
@@ -116,7 +123,7 @@ export default function ProductVideo() {
                 </p>
                 <button
                   className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-sm font-bold rounded hover:bg-gray-200"
-                  onClick={() =>  {
+                  onClick={() => {
                     const message = `Mighty (x1): ${price}`;
                     const encodedMessage = encodeURIComponent(
                       `Voici ma commande :\n${message}`

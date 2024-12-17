@@ -1,20 +1,25 @@
 "use client";
 
-import React, { useState } from "react";
 import Image from "next/image";
+import { useState } from "react";
 
-export const GradientCard = ({ title, videoSrc, modalContent, containerWidth }) => {
+export const GradientCard = ({
+  title,
+  videoSrc,
+  modalContent,
+  containerWidth,
+}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
       <div
-        className={`relative md:w-[${containerWidth}] h-[300px] xl:max-[1400px]:h-[450px] md:h-[600px] rounded-lg bg-black`}
+        className={`relative md:w-[${containerWidth}] h-[300px] xl:max-[1515px]:h-[450px] md:h-[600px] rounded-lg bg-black`}
       >
         {/* Gradient Text */}
         <p className="absolute w-full flex justify-center md:w-auto z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl md:text-4xl font-normal text-transparent bg-gradient-to-r from-white to-gray-600 bg-clip-text">
-  {title}
-</p>
+          {title}
+        </p>
 
         {/* Background Video */}
         <video
@@ -51,7 +56,7 @@ export const GradientCard = ({ title, videoSrc, modalContent, containerWidth }) 
           onClick={() => setIsModalOpen(false)}
         >
           <div
-            className="relative bg-white rounded-lg shadow-lg p-6 w-[90%] sm:w-[500px] md:w-[600px]"
+            className="relative bg-[#E6E7F6] rounded-lg shadow-lg p-6 w-[90%] sm:w-[500px] md:w-[600px]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
