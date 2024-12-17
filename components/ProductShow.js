@@ -53,7 +53,7 @@ export default function ProductShow() {
   return (
     <div className="w-full h-[650px] min-[768px]:max-[1280px]:h-[750px] flex flex-col md:flex-row min-[768px]:max-[1280px]:flex-col items-center min-[768px]:max-[1280px]:items-center min-[768px]:max-[1280px]:justify-center md:items-start justify-center pt-11 ">
       {/* Section gauche (titre et description) */}
-      <div className="w-[400px] h-[200px] min-[768px]:max-[1280px]:h-[200px] xl:max-[1515px]:w-[250px] xl:max-[1515px]:h-[350px] md:h-[450px] bg-transparent min-[768px]:max-[1280px]:border-none md:border-r-2 border-gray-300 flex flex-col justify-center items-center min-[768px]:max-[1280px]:justify-center min-[768px]:max-[1280px]:items-center md:items-start md:justify-start pt-6 px-6" id="AboutUs">
+      <div className="w-[400px] h-[200px] min-[768px]:max-[1280px]:h-[200px] xl:max-[1515px]:w-[250px] xl:max-[1515px]:h-[350px] md:h-[450px] bg-transparent min-[768px]:max-[1280px]:border-none md:border-r-2 border-gray-300 flex flex-col justify-center items-center min-[768px]:max-[1280px]:justify-center min-[768px]:max-[1280px]:items-center md:items-start md:justify-start pt-6 px-6" id="nos-parfums">
         <h2 className="text-black text-5xl min-[768px]:max-[1280px]:text-5xl font-medium md:text-2xl xl:max-[1515px]:text-xl">
           PRODUITS
         </h2>
