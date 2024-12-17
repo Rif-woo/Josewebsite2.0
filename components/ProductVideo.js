@@ -3,6 +3,12 @@ import React, { useState } from "react";
 import { GradientCard } from "./GradientCard";
 import Image from "next/image";
 
+const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+let price = "20 €";
+if (timeZone.includes("Africa")) {
+  price = "5000 FCFA";
+}
+
 export default function ProductVideo() {
   return (
     <div className="w-full flex flex-col items-center justify-center px-4 md:px-10 gap-6 mt-16 mb-16">
@@ -35,7 +41,7 @@ export default function ProductVideo() {
                 <button
                   className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-sm font-bold rounded hover:bg-gray-200"
                   onClick={() =>  {
-                    const message = `Coco Jojo (x1): 5000fcfa`;
+                    const message = `Coco Jojo (x1): ${price}`;
                     const encodedMessage = encodeURIComponent(
                       `Voici ma commande :\n${message}`
                     );
@@ -111,7 +117,7 @@ export default function ProductVideo() {
                 <button
                   className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-sm font-bold rounded hover:bg-gray-200"
                   onClick={() =>  {
-                    const message = `Mighty (x1): 5000fcfa`;
+                    const message = `Mighty (x1): ${price}`;
                     const encodedMessage = encodeURIComponent(
                       `Voici ma commande :\n${message}`
                     );

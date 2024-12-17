@@ -3,37 +3,43 @@ import ProductCarrousel from "./ProductCarrousel";
 import "../app/embla.css";
 
 const OPTIONS = {}; // Configuration de Embla (ex: { loop: true })
+const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+console.log(timeZone); // Exemple : "Europe/Paris"
+let price = "20 €";
+if (timeZone.includes("Africa")) {
+  price = "5000 FCFA";
+}
 
 // Liste des produits avec leurs données
 const PRODUCTS = [
   {
     id: 1,
     name: "Grace",
-    price: "5000 FCFA",
+    price: price,
     image: "/Grace.webp",
   },
   {
     id: 2,
     name: "Coco Jojo",
-    price: "5000 FCFA",
+    price: price,
     image: "/coco.webp",
   },
   {
     id: 3,
     name: "Favor",
-    price: "5000 FCFA",
+    price: price,
     image: "/Favor.webp",
   },
   {
     id: 4,
     name: "Mighty",
-    price: "5000 FCFA",
+    price: price,
     image: "/Mighty.webp",
   },
   {
     id: 5,
     name: "Divine",
-    price: "5000 FCFA",
+    price: price,
     image: "/Divine.webp",
   },
 ];
