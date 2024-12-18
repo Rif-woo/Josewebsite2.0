@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 export default function Header() {
   return (
-    <div className="relative w-full bg-black h-[500px] md:h-screen box-border">
+    <div className="relative w-full bg-black h-[350px] md:h-screen box-border">
       {/* Image de fond */}
       <Image
         src="/bg-header.webp"

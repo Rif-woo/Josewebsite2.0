@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState} from "react";
 import "../app/embla.css";
+import Image from "next/image";
 import ProductCarrousel from "./ProductCarrousel";
 
 const OPTIONS = {}; // Configuration de Embla (ex: { loop: true })
@@ -84,19 +85,15 @@ export default function ProductShow() {
 
       {/* Carrousel des produits */}
       <ProductCarrousel products={PRODUCTS} options={OPTIONS} />
-      <div className="md:hidden size-14 flex flex-col items-center justify-center bg-transparent">
-      <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          className=" w-full h-full object-cover pointer-events-none"
-        >
-          <source src="/swipeAnimation.webm" type="video/webm" />
-          Your browser does not support the video tag.
-        </video>
-        <p className="w-[250px] text-center text-black">Swipe pour voir plus</p>
+      <div className="relative md:hidden size-14 flex flex-col items-center justify-center bg-transparent">
+      <Image
+        src="/anim2.gif"
+        alt="Header background"
+        fill
+        className="opacity-50 object-cover z-0"
+        draggable="false"
+      />
+        <p className="w-[250px] text-center text-black mt-16">Swipe pour voir plus</p>
       </div>
     </div>
   );
