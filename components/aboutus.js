@@ -21,7 +21,7 @@ export default function AboutUs() {
         {/* Text Section */}
         <div className="text-left w-full max-w-[600px] xl:max-[1515px]:w-[500px]">
           <h2 className="text-transparent bg-gradient-to-r from-gray-600 via-white to-white bg-clip-text xl:max-[1515px]:text-3xl text-4xl md:text-5xl font-medium mb-6 md:mb-10">
-          A propos
+          À propos
           </h2>
           <p className="text-gray-700 text-lg md:text-2xl min-[768px]:max-[1280px]:text-xl xl:max-[1515px]:text-base leading-relaxed">
             Chez <span className="font-semibold">reinoush</span>, nous créons

@@ -14,7 +14,7 @@ const OPTIONS = {}; // Configuration de Embla (ex: { loop: true })
 const PRODUCTS = [
   {
     id: 1,
-    name: "Grace",
+    name: "Grâce",
     price: "5000 FCFA",
     typeParfum: "Parfum Femme",
     image: "/Grace.webp",
@@ -84,6 +84,20 @@ export default function ProductShow() {
 
       {/* Carrousel des produits */}
       <ProductCarrousel products={PRODUCTS} options={OPTIONS} />
+      <div className="md:hidden size-14 flex flex-col items-center justify-center">
+      <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className=" w-full h-full object-cover pointer-events-none"
+        >
+          <source src="/swipeAnimation.webm" type="video/webm" />
+          Your browser does not support the video tag.
+        </video>
+        <p className="w-[250px] text-center text-black">Swipe pour voir plus</p>
+      </div>
     </div>
   );
 }

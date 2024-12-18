@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 export default function Header() {
   return (
-    <div className="relative w-full bg-black h-screen box-border">
+    <div className="relative w-full bg-black h-[700px] md:h-screen box-border">
       {/* Image de fond */}
       <Image
         src="/bg-header.webp"
@@ -21,7 +21,7 @@ export default function Header() {
               href="#Apropos"
               className="text-white text-sm md:text-base xl:max-[1515px]:text-sm z-10"
             >
-              A propos
+              À propos
             </Link>
           </li>
           <li className="z-10">
@@ -45,7 +45,7 @@ export default function Header() {
 
       {/* Contenu principal du header */}
       <div className="relative w-full h-full flex flex-col gap-10 xl:gap-12 items-center justify-center px-4 text-center">
-        <h1 className="text-3xl md:text-5xl lg:text-8xl text-white tracking-wide w-full md:w-[1000px] xl:max-[1515px]:w-[1000px] xl:max-[1515px]:text-4xl lg:w-full font-normal z-10">
+        <h1 className="text-3xl md:text-5xl lg:text-8xl text-white tracking-wide w-full xl:max-[1515px]:text-6xl lg:w-full font-normal z-10">
           Plongez dans l'univers envoûtant de nos parfums
         </h1>
 
