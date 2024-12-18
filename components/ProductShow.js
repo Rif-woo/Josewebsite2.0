@@ -84,7 +84,7 @@ export default function ProductShow() {
 
       {/* Carrousel des produits */}
       <ProductCarrousel products={PRODUCTS} options={OPTIONS} />
-      <div className="md:hidden size-14 flex flex-col items-center justify-center">
+      <div className="md:hidden size-14 flex flex-col items-center justify-center bg-transparent">
       <video
           autoPlay
           loop
