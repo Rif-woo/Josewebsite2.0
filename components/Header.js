@@ -45,13 +45,13 @@ export default function Header() {
 
       {/* Contenu principal du header */}
       <div className="relative w-full h-full flex flex-col gap-10 xl:gap-12 items-center justify-center px-4 text-center">
-        <h1 className="text-3xl md:text-5xl lg:text-8xl text-white tracking-wide w-full xl:max-[1515px]:text-6xl lg:w-full font-normal z-10">
+        <h1 className="text-2xl md:text-5xl lg:text-8xl text-white tracking-wide w-full xl:max-[1515px]:text-6xl lg:w-full font-normal z-10">
           Plongez dans l'univers envoûtant de nos parfums
         </h1>
 
         <Link
           href="#nos-parfums" // Remplacez par l'URL cible
-          className="relative inline-block text-center bg-transparent border-2 border-white xl:max-[1515px]:py-2 xl:max-[1515px]:px-3 xl:max-[1515px]:text-sm text-white px-4 md:px-6 py-2 md:py-3 rounded-md z-10
+          className="relative inline-block text-center bg-transparent border-2 md:text-lg text-[11px] border-white xl:max-[1515px]:py-2 xl:max-[1515px]:px-3 xl:max-[1515px]:text-lg text-white px-4 md:px-6 py-2 md:py-3 rounded-md z-10
         hover:bg-white hover:text-black transition-colors duration-300 ease-in-out hover:shadow-lg"
         >
           Découvrir nos parfums
