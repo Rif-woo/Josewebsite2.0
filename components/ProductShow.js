@@ -51,25 +51,6 @@ const PRODUCTS = [
 ];
 
 export default function ProductShow() {
-  const [adjustedProducts, setAdjustedProducts] = useState(PRODUCTS);
-
-  useEffect(() => {
-
-    // Get the user's timezone
-    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    let userPrice = "20 €";
-    if (timeZone.includes("Africa")) {
-      userPrice = "5000 FCFA";
-    }
-
-    // Update the product prices dynamically
-    const updatedProducts = PRODUCTS.map((product) => ({
-      ...product,
-      price: userPrice,
-    }));
-
-    setAdjustedProducts(updatedProducts);
-  }, []);
 //768 - 1280
   return (
     <div className="w-full h-[650px] min-[768px]:max-[1280px]:h-[750px] flex flex-col md:flex-row min-[768px]:max-[1280px]:flex-col items-center min-[768px]:max-[1280px]:items-center min-[768px]:max-[1280px]:justify-center md:items-start justify-center pt-11 ">
