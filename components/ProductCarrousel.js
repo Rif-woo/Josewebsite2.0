@@ -105,7 +105,7 @@ const ProductCarrousel = ({ products, options }) => {
                 </div>
                 {/* Bouton Panier */}
                 <button
-                  className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-sm font-bold rounded hover:bg-gray-200"
+                  className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-sm font-bold rounded hover:bg-gray-600"
                   onClick={() => addToCart(product)}
                 >
                   <div className="relative w-5 h-5 xl:max-[1515px]:w-4 xl:max-[1515px]:h-4">

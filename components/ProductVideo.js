@@ -33,15 +33,18 @@ export default function ProductVideo() {
                 height={300}
                 className="rounded-lg mb-4 sm:mb-0"
               />
-              <div className="w-full">
+              <div className="w-full flex flex-col items-start gap-3">
                 <h3 className="text-2xl font-medium text-black xl:max-[1400px]:text-xl">
                   Coco Jojo
+                  <br/><span className="text-sm text-gray-600 font-bold">
+                  Parfum Femme
+                </span>
                 </h3>
-                <p className="text-gray-600 my-4 text-xl xl:max-[1400px]:text-lg">
-                  Parfum doux et floral, idéal pour toutes les occasions.
+                <p className="text-gray-600 text-xl xl:max-[1400px]:text-lg">
+                  Un parfum féminin, unique avec une note sucrée miel.
                 </p>
                 <button
-                  className="flex mt-10 items-center justify-center px-2 py-2 bg-[#181818] text-white text-sm font-bold rounded hover:bg-gray-200"
+                  className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-sm font-bold rounded hover:bg-gray-800"
                   onClick={() => {
                     const message = `Coco Jojo (x1): ${price}`;
                     const encodedMessage = encodeURIComponent(
@@ -51,7 +54,7 @@ export default function ProductVideo() {
                     window.open(whatsappUrl, "_blank");
                   }}
                 >
-                  <div className=" relative w-5 h-5 xl:max-[1400px]:w-4 xl:max-[1400px]:h-4">
+                  <div className="relative w-5 h-5 xl:max-[1400px]:w-4 xl:max-[1400px]:h-4">
                     <Image
                       src="/shopping-cart.svg"
                       alt="Shopping Cart Icon"
@@ -86,8 +89,14 @@ export default function ProductVideo() {
                 </h3>
               </div>
               <p className="text-gray-600 my-4 text-xl xl:max-[1400px]:text-lg">
-                Profitez de nos réductions exceptionnelles sur vos parfums
-                préférés.
+              Créez le coffret de vos rêves pour les fêtes ! 🎁
+Cette année, Reinoush vous offre la possibilité de composer votre coffret sur-mesure :
+<br/><span>
+  ✨ Choisissez vos parfums préférés parmi notre collection.
+</span><br/>
+<span>
+  ✨ Ajoutez une touche de luxe avec un packaging exclusif.
+</span>
               </p>
               <button
                 className="bg-green-500 text-white py-2 px-4 xl:max-[1400px]:text-xs rounded hover:bg-green-600"
@@ -121,15 +130,18 @@ export default function ProductVideo() {
                 height={300}
                 className="rounded-lg mb-4 sm:mb-0"
               />
-              <div>
+              <div className="flex flex-col items-start gap-3">
                 <h3 className="text-2xl font-medium text-black xl:max-[1400px]:text-xl">
                   Mighty
+                  <br/><span className="text-sm text-gray-600 font-bold">
+                  Parfum Homme
+                </span>
                 </h3>
-                <p className="text-gray-600 my-4 text-xl xl:max-[1400px]:text-lg">
-                  Une fragrance puissante pour les moments inoubliables.
+                <p className="text-gray-600  text-xl xl:max-[1400px]:text-lg">
+                un parfum qui peut surprendre de par ses notes de poire, menthe alliée à la cannelle, la vanille et l'ambre.
                 </p>
                 <button
-                  className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-sm font-bold rounded hover:bg-gray-200"
+                  className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-sm font-bold rounded hover:bg-gray-800"
                   onClick={() => {
                     const message = `Mighty (x1): ${price}`;
                     const encodedMessage = encodeURIComponent(
