@@ -69,7 +69,8 @@ export default function ProductVideo() {
         {/* Card 2 - Offres Spéciales */}
         <GradientCard
           title="Offres Spéciales"
-          videoSrc="/packVideo.mp4"
+          videoSrc="/boxVideo.mp4"
+          videoWebm="/boxVideo.webm"
           containerWidth="400px"
           modalContent={
             <div className="text-center w-full max-w-lg mx-auto">
