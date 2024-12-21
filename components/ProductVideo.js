@@ -34,17 +34,17 @@ export default function ProductVideo() {
                 className="rounded-lg mb-4 sm:mb-0"
               />
               <div className="w-full flex flex-col items-start gap-3">
-                <h3 className="text-2xl font-medium text-black xl:max-[1400px]:text-xl">
+                <h3 className="text-xl font-medium text-black xl:max-[1400px]:text-xl">
                   Coco Jojo
-                  <br/><span className="text-sm text-gray-600 font-bold">
+                  <br/><span className="text-xs text-gray-600 font-bold">
                   Parfum Femme
                 </span>
                 </h3>
-                <p className="text-gray-600 text-xl xl:max-[1400px]:text-lg">
+                <p className="text-gray-600 text-lg xl:max-[1400px]:text-lg">
                   Un parfum féminin, unique avec une note sucrée miel.
                 </p>
                 <button
-                  className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-sm font-bold rounded hover:bg-gray-800"
+                  className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-xs font-bold rounded hover:bg-gray-800"
                   onClick={() => {
                     const message = `Coco Jojo (x1): ${price}`;
                     const encodedMessage = encodeURIComponent(
@@ -84,13 +84,12 @@ export default function ProductVideo() {
                   width={100}
                   height={100}
                 />
-                <h3 className="text-2xl xl:max-[1400px]:text-xl font-medium text-black">
+                <h3 className="text-xl xl:max-[1400px]:text-xl font-medium text-black">
                   Offre Spéciale
                 </h3>
               </div>
-              <p className="text-gray-600 my-4 text-xl xl:max-[1400px]:text-lg">
-              Créez le coffret de vos rêves pour les fêtes ! 🎁
-Cette année, Reinoush vous offre la possibilité de composer votre coffret sur-mesure :
+              <p className="text-gray-600 my-4 text-sm xl:max-[1400px]:text-lg">
+              Créez le coffret de vos rêves ! 🎁 Reinoush vous offre la possibilité de composer votre coffret sur-mesure :
 <br/><span>
   ✨ Choisissez vos parfums préférés parmi notre collection.
 </span><br/>
@@ -99,7 +98,7 @@ Cette année, Reinoush vous offre la possibilité de composer votre coffret sur-
 </span>
               </p>
               <button
-                className="bg-green-500 text-white py-2 px-4 xl:max-[1400px]:text-xs rounded hover:bg-green-600"
+                className="bg-green-500 text-xs text-white py-2 px-4 xl:max-[1400px]:text-xs rounded hover:bg-green-600"
                 onClick={() => {
                   const message = `Offre speciale (x1)`;
                   const encodedMessage = encodeURIComponent(
@@ -131,17 +130,17 @@ Cette année, Reinoush vous offre la possibilité de composer votre coffret sur-
                 className="rounded-lg mb-4 sm:mb-0"
               />
               <div className="flex flex-col items-start gap-3">
-                <h3 className="text-2xl font-medium text-black xl:max-[1400px]:text-xl">
+                <h3 className="text-xl font-medium text-black xl:max-[1400px]:text-xl">
                   Mighty
-                  <br/><span className="text-sm text-gray-600 font-bold">
+                  <br/><span className="text-xs text-gray-600 font-bold">
                   Parfum Homme
                 </span>
                 </h3>
-                <p className="text-gray-600  text-xl xl:max-[1400px]:text-lg">
+                <p className="text-gray-600  text-lg xl:max-[1400px]:text-lg">
                 un parfum qui peut surprendre de par ses notes de poire, menthe alliée à la cannelle, la vanille et l'ambre.
                 </p>
                 <button
-                  className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-sm font-bold rounded hover:bg-gray-800"
+                  className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-xs font-bold rounded hover:bg-gray-800"
                   onClick={() => {
                     const message = `Mighty (x1): ${price}`;
                     const encodedMessage = encodeURIComponent(
