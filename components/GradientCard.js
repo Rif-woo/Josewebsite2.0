@@ -24,12 +24,11 @@ export const GradientCard = ({
 
         {/* Background Video */}
         <video
-          autoPlay
           loop
           muted
           playsInline
-          preload="nonne"
-          loading="lazy"
+          autoPlay
+          preload="none"
           className="opacity-60 w-full h-full object-cover rounded-lg shadow-lg pointer-events-none"
         >
           <source src={videoWebm} type="video/webm" />
