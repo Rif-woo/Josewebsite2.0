@@ -28,11 +28,12 @@ export const GradientCard = ({
           loop
           muted
           playsInline
-          preload="auto"
+          preload="nonne"
+          loading="lazy"
           className="opacity-60 w-full h-full object-cover rounded-lg shadow-lg pointer-events-none"
         >
-          <source src={videoSrc} type="video/mp4" />
           <source src={videoWebm} type="video/webm" />
+          <source src={videoSrc} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 

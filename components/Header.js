@@ -17,6 +17,7 @@ export default function Header() {
         fill
         className="opacity-50 object-cover z-0"
         draggable="false"
+        priority
       />
 
       {/* Barre de navigation */}

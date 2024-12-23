@@ -88,6 +88,8 @@ const ProductCarrousel = ({ products, options }) => {
                   style={{ objectFit: "cover" }}
                   className="rounded-lg"
                   draggable="false"
+                  priority // Si l'image est importante, chargez-la en priorité
+                  quality={75} // Ajuste la qualité (de 1 à 100, 75 est un bon compromis)
                 />
               </div>
               {/* Détails du produit */}
@@ -173,6 +175,8 @@ const ProductCarrousel = ({ products, options }) => {
                           fill
                           style={{ objectFit: "cover" }}
                           className="rounded-lg"
+                          priority // Si l'image est importante, chargez-la en priorité
+                          quality={75} // Ajuste la qualité (de 1 à 100, 75 est un bon compromis)
                         />
                       </div>
                       <span className="text-sm sm:text-base">
