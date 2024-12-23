@@ -6,7 +6,7 @@ import Image from "next/image";
 // Composant MaskText pour animer chaque ligne séparément
 export function MaskText({ phrases }) {
   const body = useRef(null);
-  const isInView = useInView(body, { once: true, margin: "-75%" });
+  const isInView = useInView(body, { once: true, margin: "-5%" });
 
   const animation = {
     initial: { y: "100%" },

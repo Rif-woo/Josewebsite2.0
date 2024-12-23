@@ -1,6 +1,4 @@
-"use client";
-import { useRef } from "react";
-import { useInView, motion } from "framer-motion";
+
 import Image from "next/image";
 import { MaskText } from "./MaskText";
 
