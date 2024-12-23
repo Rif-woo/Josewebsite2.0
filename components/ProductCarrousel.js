@@ -9,6 +9,14 @@ const ProductCarrousel = ({ products, options }) => {
   // State pour gérer le panier et l'état du modal
   const [cart, setCart] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [step, setStep] = useState(1); // Étape du modal
+
+  const [formData, setFormData] = useState({
+    name: "",
+    surname: "",
+    phone: "",
+    address: "",
+  });
 
   // Ajouter un produit au panier
   const addToCart = (product) => {
@@ -26,7 +34,7 @@ const ProductCarrousel = ({ products, options }) => {
     setIsModalOpen(true);
   };
 
-  // Incrémenter la quantité
+  // Incrémenter/Décrémenter la quantité
   const incrementQuantity = (productId) => {
     setCart((prevCart) =>
       prevCart.map((item) =>
@@ -35,7 +43,6 @@ const ProductCarrousel = ({ products, options }) => {
     );
   };
 
-  // Décrémenter la quantité
   const decrementQuantity = (productId) => {
     setCart((prevCart) =>
       prevCart
@@ -44,21 +51,50 @@ const ProductCarrousel = ({ products, options }) => {
             ? { ...item, quantity: item.quantity - 1 }
             : item
         )
-        .filter((item) => item.quantity > 0) // Supprime l'article si quantité <= 0
+        .filter((item) => item.quantity > 0)
     );
+  };
+
+  // Gestion des étapes du modal
+  const handleContinue = () => {
+    if (step === 2) {
+      // Validation des champs du formulaire
+      if (
+        !formData.name ||
+        !formData.surname ||
+        !formData.phone ||
+        !formData.address
+      ) {
+        alert("Merci de remplir tous les champs.");
+        return;
+      }
+    }
+    setStep((prevStep) => prevStep + 1);
+  };
+
+  // Gérer les champs du formulaire
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   // Envoyer les données du panier via WhatsApp
   const sendToWhatsApp = () => {
-    const message = cart
+    const productDetails = cart
       .map((item) => `${item.name} (x${item.quantity}): ${item.price}`)
       .join("\n");
-    const encodedMessage = encodeURIComponent(
-      `Voici ma commande :\n${message}`
-    );
+
+    const message = `Voici ma commande :\n\nProduits :\n${productDetails}\n\nInformations client :\nNom : ${formData.name}\nPrénom : ${formData.surname}\nAdresse : ${formData.address}\nTéléphone : ${formData.phone}`;
+    const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://api.whatsapp.com/send?phone=+33789080132&text=${encodedMessage}`;
     window.open(whatsappUrl, "_blank");
   };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setStep(1); // Réinitialiser à l'étape 1
+  };
+  
 
   // Désactiver le scroll en arrière-plan lorsque le modal est ouvert
   useEffect(() => {
@@ -79,7 +115,6 @@ const ProductCarrousel = ({ products, options }) => {
           min-w-[75%] sm:min-w-[50%] md:min-w-[33.333%] lg:min-w-[25%] xl:max-[1515px]:min-w-[20%]"
               key={product.id}
             >
-              {/* Image du produit */}
               <div className="w-full h-[300px] sm:h-[300px] md:h-[350px] xl:max-[1515px]:h-[250px] relative">
                 <Image
                   src={product.image}
@@ -88,11 +123,10 @@ const ProductCarrousel = ({ products, options }) => {
                   style={{ objectFit: "cover" }}
                   className="rounded-lg"
                   draggable="false"
-                  priority // Si l'image est importante, chargez-la en priorité
-                  quality={75} // Ajuste la qualité (de 1 à 100, 75 est un bon compromis)
+                  priority
+                  quality={75}
                 />
               </div>
-              {/* Détails du produit */}
               <div className="flex w-full justify-between items-center mt-4 px-2">
                 <div className="flex flex-col gap-1">
                   <h3 className="text-[#000000] text-sm sm:text-base xl:max-[1515px]:text-sm font-normal">
@@ -105,7 +139,6 @@ const ProductCarrousel = ({ products, options }) => {
                     {product.price}
                   </p>
                 </div>
-                {/* Bouton Panier */}
                 <button
                   className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-sm font-bold rounded hover:bg-gray-600"
                   onClick={() => addToCart(product)}
@@ -132,7 +165,7 @@ const ProductCarrousel = ({ products, options }) => {
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
           onClick={(e) => {
             if (e.target === e.currentTarget) {
-              setIsModalOpen(false);
+              closeModal();
             }
           }}
         >
@@ -140,76 +173,116 @@ const ProductCarrousel = ({ products, options }) => {
             className="relative w-[90%] sm:w-[400px] max-h-[90%] text-black bg-[#E6E7F6] shadow-lg p-4 overflow-y-auto rounded-lg"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Bouton pour fermer le modal */}
-            <button
-              className="absolute top-5 right-3 w-6 h-6 text-gray-500 hover:text-gray-800"
-              onClick={() => setIsModalOpen(false)}
-            >
-              <Image
-                src="/cancel.svg"
-                alt="Close Icon"
-                fill
-                style={{ objectFit: "contain" }}
-              />
-            </button>
-
-            <h2 className="text-lg sm:text-3xl font-medium mb-6 text-black">
-              Votre Panier
-            </h2>
-
-            {cart.length === 0 ? (
-              <p className="text-sm sm:text-base">Votre panier est vide.</p>
-            ) : (
-              <ul className="space-y-4">
-                {cart.map((item) => (
-                  <li
-                    key={item.id}
-                    className="flex items-center justify-between border-b pb-2"
-                  >
-                    {/* Détails du produit */}
-                    <div className="flex items-center gap-2">
-                      <div className="w-12 h-12 relative">
-                        <Image
-                          src={item.image}
-                          alt={item.name}
-                          fill
-                          style={{ objectFit: "cover" }}
-                          className="rounded-lg"
-                          priority // Si l'image est importante, chargez-la en priorité
-                          quality={75} // Ajuste la qualité (de 1 à 100, 75 est un bon compromis)
-                        />
+            {step === 1 && (
+              <>
+                <h2 className="text-lg sm:text-3xl font-medium mb-6 text-black">
+                  Votre Panier
+                </h2>
+                <ul className="space-y-4">
+                  {cart.map((item) => (
+                    <li
+                      key={item.id}
+                      className="flex items-center justify-between border-b pb-2"
+                    >
+                      <div className="flex items-center gap-2">
+                        <div className="w-12 h-12 relative">
+                          <Image
+                            src={item.image}
+                            alt={item.name}
+                            fill
+                            style={{ objectFit: "cover" }}
+                            className="rounded-lg"
+                          />
+                        </div>
+                        <span className="text-sm sm:text-base">
+                          {item.name} (x{item.quantity})
+                        </span>
                       </div>
-                      <span className="text-sm sm:text-base">
-                        {item.name} (x{item.quantity})
-                      </span>
-                    </div>
-
-                    {/* Boutons de gestion */}
-                    <div className="flex gap-2 items-center">
-                      <button
-                        className="text-white bg-green-500 px-2 rounded"
-                        onClick={() => incrementQuantity(item.id)}
-                      >
-                        +
-                      </button>
-                      <button
-                        className="text-white bg-red-500 px-2 rounded"
-                        onClick={() => decrementQuantity(item.id)}
-                      >
-                        -
-                      </button>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+                      <div className="flex gap-2 items-center">
+                        <button
+                          className="text-white bg-green-500 px-2 rounded"
+                          onClick={() => incrementQuantity(item.id)}
+                        >
+                          +
+                        </button>
+                        <button
+                          className="text-white bg-red-500 px-2 rounded"
+                          onClick={() => decrementQuantity(item.id)}
+                        >
+                          -
+                        </button>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  className="mt-4 w-full px-4 py-2 bg-green-500 text-white rounded hover:bg-green-400"
+                  onClick={handleContinue}
+                >
+                  Continuer
+                </button>
+              </>
             )}
 
-            <button
-              className="mt-4 w-full px-4 py-2 bg-green-500 text-white rounded hover:bg-green-400"
-              onClick={sendToWhatsApp}
-            >
-              Envoyer via WhatsApp
-            </button>
+            {step === 2 && (
+              <>
+                <h2 className="text-lg sm:text-3xl font-medium mb-6 text-black">
+                  Informations Client
+                </h2>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Nom"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  className="w-full mb-2 px-4 py-2 border rounded"
+                />
+                <input
+                  type="text"
+                  name="surname"
+                  placeholder="Prénom"
+                  value={formData.surname}
+                  onChange={handleInputChange}
+                  className="w-full mb-2 px-4 py-2 border rounded"
+                />
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="Téléphone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  className="w-full mb-2 px-4 py-2 border rounded"
+                />
+                <input
+                  type="text"
+                  name="address"
+                  placeholder="Adresse"
+                  value={formData.address}
+                  onChange={handleInputChange}
+                  className="w-full mb-2 px-4 py-2 border rounded"
+                />
+                <button
+                  className="mt-4 w-full px-4 py-2 bg-green-500 text-white rounded hover:bg-green-400"
+                  onClick={handleContinue}
+                >
+                  Continuer
+                </button>
+              </>
+            )}
+
+            {step === 3 && (
+              <>
+                <h2 className="text-lg sm:text-3xl font-medium mb-6 text-black">
+                  Paiement
+                </h2>
+                <button
+                  className="mt-4 w-full px-4 py-2 bg-green-500 text-white rounded hover:bg-green-400"
+                  onClick={sendToWhatsApp}
+                >
+                  Envoyer via WhatsApp
+                </button>
+              </>
+            )}
           </div>
         </div>
       )}

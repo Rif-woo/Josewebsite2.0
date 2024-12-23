@@ -54,7 +54,7 @@ export default function Header() {
 
 
       {/* Contenu principal du header */}
-      <div className="relative w-full h-full flex flex-col gap-5 items-center justify-center px-4 ">
+      <div className="relative w-full h-full flex flex-col gap-10 items-center justify-center px-4">
         {/* Texte animé */}
         <AnimatedHeaderText phrases={headerPhrases} />
 

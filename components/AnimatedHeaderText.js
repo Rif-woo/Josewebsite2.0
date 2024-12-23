@@ -19,13 +19,13 @@ export default function AnimatedHeaderText({ phrases }) {
   }, []);
 
   const animation = {
-    initial: { y: '150%' }, // Distance verticale réduite
+    initial: { y: '250%' }, // Distance verticale réduite
     animate: (i) => ({
       y: '0%', // Le texte revient dans la vue
       transition: {
-        duration: isMobile ? 0.4 : 0.6, // Plus rapide sur mobile
+        duration: isMobile ? 0.4 : 0.77, // Plus rapide sur mobile
         ease: [0.33, 1, 0.68, 1],
-        delay: 0.05 * i, // Décalage progressif
+        delay: 0.06 * i, // Décalage progressif
       },
     }),
   };

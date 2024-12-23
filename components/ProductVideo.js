@@ -11,7 +11,7 @@ if (timeZone.includes("Africa")) {
 
 export default function ProductVideo() {
   return (
-    <div className="w-full flex flex-col items-center justify-center px-4 md:px-10 gap-6 xl:max-[1515px]:mt-5 mt-16 mb-16">
+    <div className="w-full flex flex-col items-center justify-center px-4 md:px-10 gap-6 xl:max-[1515px]:mt-5 mt-16 md:mb-40 mb-16">
       {/* Title */}
       <h2 className="text-black font-medium text-3xl xl:max-[1515px]:text-4xl md:text-5xl text-center pb-6">
         Sélection du Moment
