@@ -1,6 +1,13 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
+import AnimatedHeaderText from './AnimatedHeaderText';
+
 export default function Header() {
+  const headerPhrases = [
+    "Plongez dans l'univers",
+    "envoûtant de nos parfums",
+  ];
+
   return (
     <div className="relative w-full bg-black h-[350px] md:h-screen box-border">
       {/* Image de fond */}
@@ -43,11 +50,12 @@ export default function Header() {
         </ul>
       </nav>
 
+
+
       {/* Contenu principal du header */}
-      <div className="relative w-full h-full flex flex-col gap-5 xl:gap-12 items-center justify-center px-4 text-center">
-        <h1 className="text-sm md:text-5xl lg:text-8xl text-white tracking-wide w-full xl:max-[1515px]:text-6xl lg:w-full font-normal z-10">
-          Plongez dans l'univers envoûtant de nos parfums
-        </h1>
+      <div className="relative w-full h-full flex flex-col gap-5 items-center justify-center px-4 ">
+        {/* Texte animé */}
+        <AnimatedHeaderText phrases={headerPhrases} />
 
         <Link
           href="#nos-parfums" // Remplacez par l'URL cible

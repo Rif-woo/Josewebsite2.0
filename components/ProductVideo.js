@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { GradientCard } from "./GradientCard";
+import { MaskVideo } from "./AnimatedVideo";
 
 const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 let price = "20 €";
@@ -16,8 +17,8 @@ export default function ProductVideo() {
         Sélection du Moment
       </h2>
 
-      {/* Cards Container */}
-      <div className="w-full flex flex-col md:flex-row items-center justify-center gap-6">
+      {/* Cards with animation */}
+      <MaskVideo>
         {/* Card 1 - Tendances */}
         <GradientCard
           title="Tendances"
@@ -36,9 +37,10 @@ export default function ProductVideo() {
               <div className="w-full flex flex-col items-start gap-3">
                 <h3 className="text-xl font-medium text-black xl:max-[1400px]:text-xl">
                   Coco Jojo
-                  <br/><span className="text-xs text-gray-600 font-bold">
-                  Parfum Femme
-                </span>
+                  <br />
+                  <span className="text-xs text-gray-600 font-bold">
+                    Parfum Femme
+                  </span>
                 </h3>
                 <p className="text-gray-600 text-lg xl:max-[1400px]:text-lg">
                   Un parfum féminin, unique avec une note sucrée miel.
@@ -74,7 +76,7 @@ export default function ProductVideo() {
           title="Offres Spéciales"
           videoSrc="/boxVideo.mp4"
           videoWebm="/boxVideo.webm"
-          containerWidth="400px"
+          containerWidth="600px"
           modalContent={
             <div className="text-center w-full max-w-lg mx-auto">
               <div className="flex flex-col items-center">
@@ -89,13 +91,12 @@ export default function ProductVideo() {
                 </h3>
               </div>
               <p className="text-gray-600 my-4 text-sm xl:max-[1400px]:text-lg">
-              Créez le coffret de vos rêves ! 🎁 Reinoush vous offre la possibilité de composer votre coffret sur-mesure :
-<br/><span>
-  ✨ Choisissez vos parfums préférés parmi notre collection.
-</span><br/>
-<span>
-  ✨ Ajoutez une touche de luxe avec un packaging exclusif.
-</span>
+                Créez le coffret de vos rêves ! 🎁 Reinoush vous offre la
+                possibilité de composer votre coffret sur-mesure :
+                <br />
+                <span>✨ Choisissez vos parfums préférés parmi notre collection.</span>
+                <br />
+                <span>✨ Ajoutez une touche de luxe avec un packaging exclusif.</span>
               </p>
               <button
                 className="bg-green-500 text-xs text-white py-2 px-4 xl:max-[1400px]:text-xs rounded hover:bg-green-600"
@@ -132,12 +133,14 @@ export default function ProductVideo() {
               <div className="flex flex-col items-start gap-3">
                 <h3 className="text-xl font-medium text-black xl:max-[1400px]:text-xl">
                   Mighty
-                  <br/><span className="text-xs text-gray-600 font-bold">
-                  Parfum Homme
-                </span>
+                  <br />
+                  <span className="text-xs text-gray-600 font-bold">
+                    Parfum Homme
+                  </span>
                 </h3>
                 <p className="text-gray-600  text-lg xl:max-[1400px]:text-lg">
-                un parfum qui peut surprendre de par ses notes de poire, menthe alliée à la cannelle, la vanille et l'ambre.
+                  un parfum qui peut surprendre de par ses notes de poire, menthe
+                  alliée à la cannelle, la vanille et l'ambre.
                 </p>
                 <button
                   className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-xs font-bold rounded hover:bg-gray-800"
@@ -164,7 +167,7 @@ export default function ProductVideo() {
             </div>
           }
         />
-      </div>
+      </MaskVideo>
     </div>
   );
 }
