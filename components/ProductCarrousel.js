@@ -2,6 +2,7 @@
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const ProductCarrousel = ({ products, options }) => {
   const [emblaRef] = useEmblaCarousel(options);
@@ -9,7 +10,10 @@ const ProductCarrousel = ({ products, options }) => {
   // State pour gérer le panier et l'état du modal
   const [cart, setCart] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalProductOpen, setIsModalProductOpen] = useState(false)
   const [step, setStep] = useState(1); // Étape du modal
+  const [selectedProduct, setSelectedProduct] = useState(null)
+
 
   const [formData, setFormData] = useState({
     name: "",
@@ -95,6 +99,15 @@ const ProductCarrousel = ({ products, options }) => {
     setStep(1); // Réinitialiser à l'étape 1
   };
 
+   const closeProductModal = () => {
+     setIsModalProductOpen(false)
+   }
+
+  const openProductModal = (product) => {
+    setSelectedProduct(product)
+    setIsModalProductOpen(true)
+   }
+
 
   // Désactiver le scroll en arrière-plan lorsque le modal est ouvert
   useEffect(() => {
@@ -115,7 +128,13 @@ const ProductCarrousel = ({ products, options }) => {
           min-w-[75%] sm:min-w-[50%] md:min-w-[33.333%] lg:min-w-[25%] xl:max-[1515px]:min-w-[20%]"
               key={product.id}
             >
-              <div className="w-full h-[300px] sm:h-[300px] md:h-[350px] xl:max-[1515px]:h-[250px] relative">
+              <motion.div
+                className="w-full cursor-pointer  h-[300px] sm:h-[300px] md:h-[350px] xl:max-[1515px]:h-[250px] relative "
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.9 }}
+                style={{ transformOrigin: 'center' }}
+                onClick={() => openProductModal(product)}
+              >
                 <Image
                   src={product.image}
                   alt={product.name}
@@ -126,7 +145,7 @@ const ProductCarrousel = ({ products, options }) => {
                   priority
                   quality={75}
                 />
-              </div>
+              </motion.div>
               <div className="flex w-full justify-between items-center mt-4 px-2">
                 <div className="flex flex-col gap-1">
                   <h3 className="text-[#000000] text-sm sm:text-base xl:max-[1515px]:text-sm font-normal">
@@ -139,9 +158,12 @@ const ProductCarrousel = ({ products, options }) => {
                     {product.price}
                   </p>
                 </div>
-                <button
+                <motion.button
                   className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-sm font-bold rounded hover:bg-gray-600"
                   onClick={() => addToCart(product)}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  style={{ transformOrigin: 'center' }}
                 >
                   <div className="relative w-5 h-5 xl:max-[1515px]:w-4 xl:max-[1515px]:h-4">
                     <Image
@@ -152,13 +174,91 @@ const ProductCarrousel = ({ products, options }) => {
                       draggable="false"
                     />
                   </div>
-                </button>
+                </motion.button>
               </div>
             </div>
           ))}
         </div>
       </div>
-
+      {isModalProductOpen && (
+        <AnimatePresence>
+          {isModalProductOpen && (
+            <motion.div
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={(e) => {
+                if (e.target === e.currentTarget) closeModal()
+              }}
+            >
+              <motion.div
+                className="bg-white rounded-lg p-6 w-full max-w-lg sm:max-w-xl relative"
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: 50, opacity: 0 }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                onClick={(e) => e.stopPropagation()} // Empêche la fermeture du modal en cliquant à l'intérieur
+              >
+                {/* Bouton pour fermer */}
+                <motion.button
+                  className="absolute top-2 right-2 w-5 h-5 xl:max-[1515px]:w-4 xl:max-[1515px]:h-4"
+                  onClick={(e) => {
+                    closeProductModal()
+                  }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  style={{ transformOrigin: 'center' }}
+                >
+                  <Image
+                    src="/cancel.svg"
+                    alt="cancel Icon"
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    draggable="false"
+                  />
+                </motion.button>
+                {/* Contenu du modal */}
+                <div className="flex flex-col sm:flex-row sm:gap-4 items-center sm:items-start w-full">
+                  <Image
+                    src={selectedProduct.image}
+                    alt={selectedProduct.name}
+                    width={300}
+                    height={300}
+                    className="rounded-lg mb-4 sm:mb-0"
+                  />
+                  <div className="w-full flex flex-col items-start gap-3">
+                    <h3 className="text-xl font-medium text-black xl:max-[1400px]:text-xl">
+                      {selectedProduct.name}
+                      <br />
+                      <span className="text-xs text-gray-600 font-bold">
+                        {selectedProduct.typeParfum}
+                      </span>
+                    </h3>
+                    <p className="text-gray-600 text-lg xl:max-[1400px]:text-lg">
+                      {selectedProduct.description}
+                    </p>
+                    <button
+                      className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-xs font-bold rounded hover:bg-gray-800"
+                      onClick={() => addToCart(selectedProduct)}
+                    >
+                      <div className="relative w-5 h-5 xl:max-[1400px]:w-4 xl:max-[1400px]:h-4">
+                        <Image
+                          src="/shopping-cart.svg"
+                          alt="Shopping Cart Icon"
+                          fill
+                          style={{ objectFit: 'contain' }}
+                          draggable="false"
+                        />
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      )}
       {/* Modal */}
       {isModalOpen && (
         <div

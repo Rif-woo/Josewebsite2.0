@@ -27,40 +27,48 @@ const phrases = [
 const PRODUCTS = [
   {
     id: 1,
-    name: "Grâce",
+    name: 'Grâce',
     price: price,
-    typeParfum: "Parfum Femme",
-    image: "/Grace.webp",
+    typeParfum: 'Parfum Femme',
+    description: 'Un parfum à la fois raffiné, élégant.',
+    image: '/Grace.webp',
   },
   {
     id: 2,
-    name: "Coco Jojo",
+    name: 'Coco Jojo',
     price: price,
-    typeParfum: "Parfum Femme",
-    image: "/coco.webp",
+    typeParfum: 'Parfum Femme',
+    description: 'Un parfum féminin, unique avec une note sucrée miel.',
+    image: '/coco.webp',
   },
   {
     id: 3,
-    name: "Favor",
+    name: 'Favor',
     price: price,
-    typeParfum: "Parfum Homme",
-    image: "/Favor.webp",
+    typeParfum: 'Parfum Homme',
+    description:
+      "une caractéristique sucrée ainsi qu'un aspect très masculin avec ses notes fumées et boisées, sans être agressif.",
+    image: '/Favor.webp',
   },
   {
     id: 4,
-    name: "Mighty",
+    name: 'Mighty',
     price: price,
-    typeParfum: "Parfum Homme",
-    image: "/Mighty.webp",
+    typeParfum: 'Parfum Homme',
+    description:
+      "un parfum qui peut surprendre de par ses notes de poire, menthe alliée à la cannelle, la vanille et l'ambre",
+    image: '/Mighty.webp',
   },
   {
     id: 5,
-    name: "Divine",
+    name: 'Divine',
     price: price,
-    typeParfum: "Parfum Femme",
-    image: "/Divine.webp",
+    typeParfum: 'Parfum Femme',
+    description:
+      'un parfum qui incarne à la perfection l’élégance intemporelle et la grâce céleste.',
+    image: '/Divine.webp',
   },
-];
+]
 
 export default function ProductShow() {
 //768 - 1280
