@@ -184,12 +184,12 @@ const ProductCarrousel = ({ products, options }) => {
         <AnimatePresence>
           {isModalProductOpen && (
             <motion.div
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+              className="fixed inset-0 z-50 p-6 flex items-center justify-center bg-black/50"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={(e) => {
-                if (e.target === e.currentTarget) closeModal()
+                if (e.target === e.currentTarget) closeProductModal()
               }}
             >
               <motion.div
@@ -219,7 +219,7 @@ const ProductCarrousel = ({ products, options }) => {
                   />
                 </motion.button>
                 {/* Contenu du modal */}
-                <div className="flex flex-col sm:flex-row sm:gap-4 items-center sm:items-start w-full">
+                <div className="flex flex-col mt-2 sm:flex-row sm:gap-4 items-center sm:items-start w-full">
                   <Image
                     src={selectedProduct.image}
                     alt={selectedProduct.name}
