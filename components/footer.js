@@ -45,6 +45,19 @@ export default function Footer() {
               className="hover:opacity-80 transition"
             />
           </Link>
+          <Link
+            href="https://www.facebook.com/share/1AaQxR65V6/?mibextid=wwXIfr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/facebook.svg"
+              alt="tiktok"
+              width={32}
+              height={32}
+              className="hover:opacity-80 transition"
+            />
+          </Link>
         </div>
 
         {/* Copyright */}
@@ -55,5 +68,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  );
+  )
 }

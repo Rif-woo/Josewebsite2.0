@@ -94,7 +94,7 @@ const ProductCarrousel = ({ products, options }) => {
     setIsModalOpen(false);
     setStep(1); // Réinitialiser à l'étape 1
   };
-  
+
 
   // Désactiver le scroll en arrière-plan lorsque le modal est ouvert
   useEffect(() => {
@@ -111,7 +111,7 @@ const ProductCarrousel = ({ products, options }) => {
         <div className="embla__container flex gap-4">
           {products.map((product) => (
             <div
-              className="embla__slide flex flex-col items-center 
+              className="embla__slide flex flex-col items-center
           min-w-[75%] sm:min-w-[50%] md:min-w-[33.333%] lg:min-w-[25%] xl:max-[1515px]:min-w-[20%]"
               key={product.id}
             >
@@ -120,7 +120,7 @@ const ProductCarrousel = ({ products, options }) => {
                   src={product.image}
                   alt={product.name}
                   fill
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: 'cover' }}
                   className="rounded-lg"
                   draggable="false"
                   priority
@@ -148,7 +148,7 @@ const ProductCarrousel = ({ products, options }) => {
                       src="/shopping-cart.svg"
                       alt="Shopping Cart Icon"
                       fill
-                      style={{ objectFit: "contain" }}
+                      style={{ objectFit: 'contain' }}
                       draggable="false"
                     />
                   </div>
@@ -165,7 +165,7 @@ const ProductCarrousel = ({ products, options }) => {
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
           onClick={(e) => {
             if (e.target === e.currentTarget) {
-              closeModal();
+              closeModal()
             }
           }}
         >
@@ -175,9 +175,25 @@ const ProductCarrousel = ({ products, options }) => {
           >
             {step === 1 && (
               <>
-                <h2 className="text-lg sm:text-3xl font-medium mb-6 text-black">
-                  Votre Panier
-                </h2>
+                <div className="flex justify-between items-center mb-6">
+                  <h2 className="text-lg sm:text-3xl font-medium text-black">
+                    Votre Panier
+                  </h2>
+                  <button
+                    className="relative w-5 h-5 xl:max-[1515px]:w-4 xl:max-[1515px]:h-4"
+                    onClick={(e) => {
+                      closeModal()
+                    }}
+                  >
+                    <Image
+                      src="/cancel.svg"
+                      alt="cancel Icon"
+                      fill
+                      style={{ objectFit: 'contain' }}
+                      draggable="false"
+                    />
+                  </button>
+                </div>
                 <ul className="space-y-4">
                   {cart.map((item) => (
                     <li
@@ -190,7 +206,7 @@ const ProductCarrousel = ({ products, options }) => {
                             src={item.image}
                             alt={item.name}
                             fill
-                            style={{ objectFit: "cover" }}
+                            style={{ objectFit: 'cover' }}
                             className="rounded-lg"
                           />
                         </div>
@@ -216,7 +232,7 @@ const ProductCarrousel = ({ products, options }) => {
                   ))}
                 </ul>
                 <button
-                  className="mt-4 w-full px-4 py-2 bg-green-500 text-white rounded hover:bg-green-400"
+                  className="mt-4 w-full px-4 py-2 bg-black text-white rounded hover:bg-gray-900 transition-all duration-300"
                   onClick={handleContinue}
                 >
                   Continuer
@@ -226,16 +242,32 @@ const ProductCarrousel = ({ products, options }) => {
 
             {step === 2 && (
               <>
-                <h2 className="text-lg sm:text-3xl font-medium mb-6 text-black">
-                  Informations Client
-                </h2>
+                <div className="flex justify-between items-center mb-6">
+                  <h2 className="text-lg sm:text-3xl font-medium text-black">
+                    Informations Client
+                  </h2>
+                  <button
+                    className="relative w-5 h-5 xl:max-[1515px]:w-4 xl:max-[1515px]:h-4"
+                    onClick={(e) => {
+                      closeModal()
+                    }}
+                  >
+                    <Image
+                      src="/cancel.svg"
+                      alt="cancel Icon"
+                      fill
+                      style={{ objectFit: 'contain' }}
+                      draggable="false"
+                    />
+                  </button>
+                </div>
                 <input
                   type="text"
                   name="name"
                   placeholder="Nom"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full mb-2 px-4 py-2 border rounded"
+                  className="w-full mb-2 px-4 py-2 border rounded-md"
                 />
                 <input
                   type="text"
@@ -243,7 +275,7 @@ const ProductCarrousel = ({ products, options }) => {
                   placeholder="Prénom"
                   value={formData.surname}
                   onChange={handleInputChange}
-                  className="w-full mb-2 px-4 py-2 border rounded"
+                  className="w-full mb-2 px-4 py-2 border rounded-md"
                 />
                 <input
                   type="text"
@@ -251,7 +283,7 @@ const ProductCarrousel = ({ products, options }) => {
                   placeholder="Téléphone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className="w-full mb-2 px-4 py-2 border rounded"
+                  className="w-full mb-2 px-4 py-2 border rounded-md"
                 />
                 <input
                   type="text"
@@ -259,10 +291,10 @@ const ProductCarrousel = ({ products, options }) => {
                   placeholder="Adresse"
                   value={formData.address}
                   onChange={handleInputChange}
-                  className="w-full mb-2 px-4 py-2 border rounded"
+                  className="w-full mb-2 px-4 py-2 border rounded-md"
                 />
                 <button
-                  className="mt-4 w-full px-4 py-2 bg-green-500 text-white rounded hover:bg-green-400"
+                  className="mt-4 w-full px-4 py-2 bg-black text-white rounded hover:bg-gray-900 transition-all duration-300"
                   onClick={handleContinue}
                 >
                   Continuer
@@ -272,14 +304,30 @@ const ProductCarrousel = ({ products, options }) => {
 
             {step === 3 && (
               <>
-                <h2 className="text-lg sm:text-3xl font-medium mb-6 text-black">
-                  Paiement
-                </h2>
+                <div className="flex justify-between items-center mb-6">
+                  <h2 className="text-lg sm:text-3xl font-medium text-black">
+                    Paiement
+                  </h2>
+                  <button
+                    className="relative w-5 h-5 xl:max-[1515px]:w-4 xl:max-[1515px]:h-4"
+                    onClick={(e) => {
+                      closeModal()
+                    }}
+                  >
+                    <Image
+                      src="/cancel.svg"
+                      alt="cancel Icon"
+                      fill
+                      style={{ objectFit: 'contain' }}
+                      draggable="false"
+                    />
+                  </button>
+                </div>
                 <button
-                  className="mt-4 w-full px-4 py-2 bg-green-500 text-white rounded hover:bg-green-400"
+                  className="mt-4 w-full px-4 py-2 bg-black text-white rounded hover:bg-gray-900 transition-all duration-300"
                   onClick={sendToWhatsApp}
                 >
-                  Envoyer via WhatsApp
+                  Acheter via WhatsApp
                 </button>
               </>
             )}
@@ -287,7 +335,7 @@ const ProductCarrousel = ({ products, options }) => {
         </div>
       )}
     </section>
-  );
+  )
 };
 
 export default ProductCarrousel;

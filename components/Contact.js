@@ -25,7 +25,7 @@ export default function ContactSection() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:max-[1515px]:max-w-5xl gap-8 items-center">
         {/* Colonne gauche */}
         <div>
-          <h2 className="text-3xl md:text-4xl font-medium text-transparent bg-gradient-to-r from-gray-600 via-white to-white bg-clip-text mb-4">
+          <h2 className="text-3xl md:text-4xl font-medium text-black mb-4">
             Contactez-nous
           </h2>
           <p className="text-gray-600 mb-6">
@@ -45,7 +45,7 @@ export default function ContactSection() {
             src="/graceBox.webp"
             alt="Contactez-nous"
             fill
-            style={{ objectFit: "cover" }}
+            style={{ objectFit: 'cover' }}
             className="rounded-lg shadow-lg"
           />
         </div>
@@ -117,5 +117,5 @@ export default function ContactSection() {
         </div>
       )}
     </section>
-  );
+  )
 }

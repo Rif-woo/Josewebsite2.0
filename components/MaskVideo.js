@@ -46,7 +46,7 @@ export function MaskVideo({ children }) {
           variants={animation}
           initial="initial"
           animate={isInView ? "enter" : ""}
-          className="w-full md:w-auto"
+          className="w-full md:w-full"
         >
           {child}
         </motion.div>

@@ -24,7 +24,7 @@ export default function AboutUs() {
             src="/Favor.webp"
             alt="Parfum Favor"
             fill
-            style={{ objectFit: "cover" }}
+            style={{ objectFit: 'cover' }}
             className="rounded-lg"
             draggable="false"
           />
@@ -32,7 +32,7 @@ export default function AboutUs() {
 
         {/* Section texte avec MaskText */}
         <div className="text-left w-full max-w-[600px] xl:max-[1515px]:w-[500px]">
-          <h2 className="text-transparent bg-gradient-to-r from-gray-600 via-white to-white bg-clip-text xl:max-[1515px]:text-3xl text-4xl md:text-5xl font-medium mb-6 md:mb-10">
+          <h2 className="text-black  xl:max-[1515px]:text-3xl text-4xl md:text-5xl font-medium mb-6 md:mb-10">
             À propos
           </h2>
 
@@ -41,5 +41,5 @@ export default function AboutUs() {
         </div>
       </div>
     </div>
-  );
+  )
 }

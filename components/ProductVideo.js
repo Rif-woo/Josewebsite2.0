@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { GradientCard } from "./GradientCard";
-import { MaskVideo } from "./AnimatedVideo";
+import { MaskVideo } from "./MaskVideo";
 
 const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 let price = "20 €";
@@ -48,12 +48,12 @@ export default function ProductVideo() {
                 <button
                   className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-xs font-bold rounded hover:bg-gray-800"
                   onClick={() => {
-                    const message = `Coco Jojo (x1): ${price}`;
+                    const message = `Coco Jojo (x1): ${price}`
                     const encodedMessage = encodeURIComponent(
                       `Voici ma commande :\n${message}`
-                    );
-                    const whatsappUrl = `https://api.whatsapp.com/send?phone=+33789080132&text=${encodedMessage}`;
-                    window.open(whatsappUrl, "_blank");
+                    )
+                    const whatsappUrl = `https://api.whatsapp.com/send?phone=+33789080132&text=${encodedMessage}`
+                    window.open(whatsappUrl, '_blank')
                   }}
                 >
                   <div className="relative w-5 h-5 xl:max-[1400px]:w-4 xl:max-[1400px]:h-4">
@@ -61,7 +61,7 @@ export default function ProductVideo() {
                       src="/shopping-cart.svg"
                       alt="Shopping Cart Icon"
                       fill
-                      style={{ objectFit: "contain" }}
+                      style={{ objectFit: 'contain' }}
                       draggable="false"
                     />
                   </div>
@@ -76,7 +76,7 @@ export default function ProductVideo() {
           title="Offres Spéciales"
           videoSrc="/boxVideo.mp4"
           videoWebm="/boxVideo.webm"
-          containerWidth="600px"
+          containerWidth="500px"
           modalContent={
             <div className="text-center w-full max-w-lg mx-auto">
               <div className="flex flex-col items-center">
@@ -94,19 +94,23 @@ export default function ProductVideo() {
                 Créez le coffret de vos rêves ! 🎁 Reinoush vous offre la
                 possibilité de composer votre coffret sur-mesure :
                 <br />
-                <span>✨ Choisissez vos parfums préférés parmi notre collection.</span>
+                <span>
+                  ✨ Choisissez vos parfums préférés parmi notre collection.
+                </span>
                 <br />
-                <span>✨ Ajoutez une touche de luxe avec un packaging exclusif.</span>
+                <span>
+                  ✨ Ajoutez une touche de luxe avec un packaging exclusif.
+                </span>
               </p>
               <button
                 className="bg-green-500 text-xs text-white py-2 px-4 xl:max-[1400px]:text-xs rounded hover:bg-green-600"
                 onClick={() => {
-                  const message = `Offre speciale (x1)`;
+                  const message = `Offre speciale (x1)`
                   const encodedMessage = encodeURIComponent(
                     `Voici ma commande :\n${message}`
-                  );
-                  const whatsappUrl = `https://api.whatsapp.com/send?phone=+33789080132&text=${encodedMessage}`;
-                  window.open(whatsappUrl, "_blank");
+                  )
+                  const whatsappUrl = `https://api.whatsapp.com/send?phone=+33789080132&text=${encodedMessage}`
+                  window.open(whatsappUrl, '_blank')
                 }}
               >
                 Commander sur WhatsApp
@@ -117,7 +121,7 @@ export default function ProductVideo() {
 
         {/* Card 3 - Envoutant */}
         <GradientCard
-          title="Envoutant"
+          title="Envoûtant"
           videoSrc="/Mighty.mp4"
           videoWebm="/Mighty.webm"
           containerWidth="200px"
@@ -139,18 +143,18 @@ export default function ProductVideo() {
                   </span>
                 </h3>
                 <p className="text-gray-600  text-lg xl:max-[1400px]:text-lg">
-                  un parfum qui peut surprendre de par ses notes de poire, menthe
-                  alliée à la cannelle, la vanille et l'ambre.
+                  un parfum qui peut surprendre de par ses notes de poire,
+                  menthe alliée à la cannelle, la vanille et l'ambre.
                 </p>
                 <button
                   className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-xs font-bold rounded hover:bg-gray-800"
                   onClick={() => {
-                    const message = `Mighty (x1): ${price}`;
+                    const message = `Mighty (x1): ${price}`
                     const encodedMessage = encodeURIComponent(
                       `Voici ma commande :\n${message}`
-                    );
-                    const whatsappUrl = `https://api.whatsapp.com/send?phone=+33789080132&text=${encodedMessage}`;
-                    window.open(whatsappUrl, "_blank");
+                    )
+                    const whatsappUrl = `https://api.whatsapp.com/send?phone=+33789080132&text=${encodedMessage}`
+                    window.open(whatsappUrl, '_blank')
                   }}
                 >
                   <div className="relative w-5 h-5 xl:max-[1400px]:w-4 xl:max-[1400px]:h-4">
@@ -158,7 +162,7 @@ export default function ProductVideo() {
                       src="/shopping-cart.svg"
                       alt="Shopping Cart Icon"
                       fill
-                      style={{ objectFit: "contain" }}
+                      style={{ objectFit: 'contain' }}
                       draggable="false"
                     />
                   </div>
@@ -169,5 +173,5 @@ export default function ProductVideo() {
         />
       </MaskVideo>
     </div>
-  );
+  )
 }
