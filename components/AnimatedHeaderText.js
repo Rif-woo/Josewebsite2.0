@@ -25,7 +25,7 @@ export default function AnimatedHeaderText({ phrases }) {
       transition: {
         duration: isMobile ? 0.6 : 0.77, // Plus rapide sur mobile
         ease: [0.33, 1, 0.68, 1],
-        delay: 0.06 * i, // Décalage progressif
+        delay: 0.06 * i, // Décalage progres
       },
     }),
   };
