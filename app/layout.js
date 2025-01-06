@@ -14,27 +14,11 @@ export default function RootLayout({ children }) {
       <Head>
         <Script
           dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l] = w[l] || [];w[l].push({'gtm.start':
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KGZLPQ8C');`,
-          }}
-        />
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=GTM-KGZLPQ8C"
-        />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-BNNCEHG6ZM');
-            `,
+})(window,document,'script','dataLayer','GTM-KGZLPQ8C');</script>`,
           }}
         />
         {/* Favicon declarations */}
@@ -42,8 +26,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <link rel="apple-touch-icon" href="/favicon.png" />
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <meta name="theme-color" content="#ffffff" />
-
-        {/* Script Google Analytics */}
       </Head>
       <body>
         <noscript>
