@@ -12,13 +12,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <Head>
-        {/* Favicon declarations */}
-        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="/favicon.png" />
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-        <meta name="theme-color" content="#ffffff" />
-
-        {/* Script Google Analytics */}
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-BNNCEHG6ZM"
@@ -35,6 +28,13 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
+        {/* Favicon declarations */}
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <meta name="theme-color" content="#ffffff" />
+
+        {/* Script Google Analytics */}
       </Head>
       <body>
         {children}
