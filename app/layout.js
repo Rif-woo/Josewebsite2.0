@@ -12,17 +12,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-        <PostHogProvider>
         <Head>
           <Script
             dangerouslySetInnerHTML={{
               __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-KGZLPQ8C');</script>`,
-            }}
-          />
+}}
+/>
           {/* Favicon declarations */}
           <link rel="icon" href="/favicon.ico" type="image/x-icon" />
           <link rel="apple-touch-icon" href="/favicon.png" />
@@ -30,6 +29,7 @@ export default function RootLayout({ children }) {
           <meta name="theme-color" content="#ffffff" />
         </Head>
       <body>
+        <PostHogProvider>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-KGZLPQ8C"
@@ -40,8 +40,8 @@ export default function RootLayout({ children }) {
         </noscript>
         {children}
         <Analytics />
-      </body>
       </PostHogProvider>
+      </body>
     </html>
   );
 }
