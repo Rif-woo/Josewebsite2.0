@@ -2,7 +2,7 @@ import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import Head from "next/head";
 import Script from "next/script";
-import { CSPostHogProvider } from './providers'
+import { PostHogProvider } from './providers';
 
 export const metadata = {
   title: "Reinoush",
@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-        <CSPostHogProvider>
+        <PostHogProvider>
         <Head>
           <Script
             dangerouslySetInnerHTML={{
@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
         {children}
         <Analytics />
       </body>
-      </CSPostHogProvider>
+      </PostHogProvider>
     </html>
   );
 }
