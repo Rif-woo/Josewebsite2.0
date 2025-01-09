@@ -28,12 +28,12 @@ export default function ContactSection() {
           <h2 className="text-3xl md:text-4xl font-medium text-black mb-4">
             Contactez-nous
           </h2>
-          <p className="text-gray-600 mb-6">
+          <p className="text-gray-700 mb-6 text-lg md:text-2xl min-[768px]:max-[1280px]:text-xl xl:max-[1515px]:text-base">
             Une question ? Notre équipe est à votre écoute.
           </p>
           <button
             onClick={toggleModal}
-            className="bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg hover:bg-gray-700 transition-all duration-300"
+            className="bg-[#181818] text-white font-semibold py-3 px-6 rounded-lg hover:bg-gray-700 transition-all duration-300"
           >
             Nous écrire
           </button>

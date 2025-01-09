@@ -13,27 +13,37 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-        <Suspense fallback={null}>
-        <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+      <Suspense fallback={null}>
+        <GoogleAnalytics
+          GA_MEASUREMENT_ID={
+            (
+              process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,
+              process.env.NEXT_PUBLIC_ANALYTICS_MEASUREMENT_ID
+            )
+          }
+        />
       </Suspense>
-        <Head>
-          {/* Favicon declarations */}
-          <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-          <link rel="apple-touch-icon" href="/favicon.png" />
-          <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-          <meta name="theme-color" content="#ffffff" />
-        </Head>
+      <Head>
+        {/* Favicon declarations */}
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <meta name="theme-color" content="#ffffff" />
+      </Head>
       <body>
-
-            <noscript>
-                <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGZLPQ8C"
-                    height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe>
-            </noscript>
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-KGZLPQ8C"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          ></iframe>
+        </noscript>
         <PostHogProvider>
-        {children}
-        <Analytics />
-      </PostHogProvider>
+          {children}
+          <Analytics />
+        </PostHogProvider>
       </body>
     </html>
-  );
+  )
 }
