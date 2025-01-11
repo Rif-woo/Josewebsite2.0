@@ -9,6 +9,7 @@ export const GradientCard = ({
   videoWebm,
   modalContent,
   containerWidth,
+  thumbnailSrc
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -28,11 +29,26 @@ export const GradientCard = ({
           muted
           playsInline
           autoPlay
-          preload="none"
+          preload="auto"
+          poster={thumbnailSrc}
           className="opacity-60 w-full h-full object-cover rounded-lg shadow-lg pointer-events-none"
+          onError={(e) => {
+            e.target.onerror = null;
+            console.log('Video loading error:', e);
+          }}
+          onLoadStart={() => console.log('Video loading started')}
+          onCanPlay={() => console.log('Video can play')}
         >
-          <source src={videoWebm} type="video/webm" />
-          <source src={videoSrc} type="video/mp4" />
+          <source 
+            src={videoSrc} 
+            type="video/mp4" 
+            onError={(e) => console.log('MP4 source error:', e)}
+          />
+          <source 
+            src={videoWebm} 
+            type="video/webm"
+            onError={(e) => console.log('WebM source error:', e)}
+          />
           Your browser does not support the video tag.
         </video>
 

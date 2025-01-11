@@ -25,6 +25,7 @@ export default function ProductVideo() {
           videoSrc="/cocojojo.C.mp4"
           videoWebm="/cocojojo.C.webm"
           containerWidth="200px"
+          thumbnailSrc="/coco.webp"
           modalContent={
             <div className="flex flex-col sm:flex-row sm:gap-4 items-center sm:items-start w-full max-w-lg sm:max-w-xl mx-auto">
               <Image
@@ -77,6 +78,7 @@ export default function ProductVideo() {
           videoSrc="/boxVideo.mp4"
           videoWebm="/boxVideo.webm"
           containerWidth="500px"
+          thumbnailSrc="/boxVideo.png"
           modalContent={
             <div className="text-center w-full max-w-lg mx-auto">
               <div className="flex flex-col items-center">
@@ -124,6 +126,7 @@ export default function ProductVideo() {
           title="Envoûtant"
           videoSrc="/Mighty.mp4"
           videoWebm="/Mighty.webm"
+          thumbnailSrc="/Mighty.webp"
           containerWidth="200px"
           modalContent={
             <div className="flex flex-col sm:flex-row sm:gap-4 items-center sm:items-start w-full max-w-lg sm:max-w-xl mx-auto">
