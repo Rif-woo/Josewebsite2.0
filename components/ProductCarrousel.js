@@ -104,28 +104,28 @@ const ProductCarrousel = ({ products, options }) => {
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://api.whatsapp.com/send?phone=+33789080132&text=${encodedMessage}`;
 
-    const clientData = {
-    name: formData.name,
-    surname: formData.surname,
-    address: formData.address,
-    phone: formData.phone,
-    products: cart.map(item => ({
-      name: item.name,
-      quantity: item.quantity,
-      price: item.price,
-    })),
-    totalAmount: cart.reduce((total, item) => total + item.price * item.quantity, 0),
-  };
+  //   const clientData = {
+  //   name: formData.name,
+  //   surname: formData.surname,
+  //   address: formData.address,
+  //   phone: formData.phone,
+  //   products: cart.map(item => ({
+  //     name: item.name,
+  //     quantity: item.quantity,
+  //     price: item.price,
+  //   })),
+  //   totalAmount: cart.reduce((total, item) => total + item.price * item.quantity, 0),
+  // };
 
+  window.open(whatsappUrl, "_blank");
   // Envoi des données à Zapier
-  sendToZapier(clientData)
-    .then(() => {
-      // Ouvrir WhatsApp une fois les données envoyées à Zapier
-      window.open(whatsappUrl, "_blank");
-    })
-    .catch((error) => {
-      console.error("Erreur lors de l'envoi des données à Zapier", error);
-    });
+  // sendToZapier(clientData)
+  //   .then(() => {
+  //     // Ouvrir WhatsApp une fois les données envoyées à Zapier
+  //   })
+  //   .catch((error) => {
+  //     console.error("Erreur lors de l'envoi des données à Zapier", error);
+  //   });
   };
 
   const closeModal = () => {
