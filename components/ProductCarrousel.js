@@ -81,6 +81,18 @@ const ProductCarrousel = ({ products, options }) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
+  const sendToZapier = async (clientData) => {
+  const response = await fetch('https://hooks.zapier.com/hooks/catch/21477985/2fdxn3p/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(clientData),
+  });
+
+  const data = await response.json();
+  console.log('Webhook data sent:', data);
+};
 
   // Envoyer les données du panier via WhatsApp
   const sendToWhatsApp = () => {
@@ -91,7 +103,29 @@ const ProductCarrousel = ({ products, options }) => {
     const message = `Voici ma commande :\n\nProduits :\n${productDetails}\n\nInformations client :\nNom : ${formData.name}\nPrénom : ${formData.surname}\nAdresse : ${formData.address}\nTéléphone : ${formData.phone}`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://api.whatsapp.com/send?phone=+33789080132&text=${encodedMessage}`;
-    window.open(whatsappUrl, "_blank");
+
+    const clientData = {
+    name: formData.name,
+    surname: formData.surname,
+    address: formData.address,
+    phone: formData.phone,
+    products: cart.map(item => ({
+      name: item.name,
+      quantity: item.quantity,
+      price: item.price,
+    })),
+    totalAmount: cart.reduce((total, item) => total + item.price * item.quantity, 0),
+  };
+
+  // Envoi des données à Zapier
+  sendToZapier(clientData)
+    .then(() => {
+      // Ouvrir WhatsApp une fois les données envoyées à Zapier
+      window.open(whatsappUrl, "_blank");
+    })
+    .catch((error) => {
+      console.error("Erreur lors de l'envoi des données à Zapier", error);
+    });
   };
 
   const closeModal = () => {
