@@ -124,10 +124,11 @@ const ProductCarrousel = ({ products, options }) => {
     .then(response => response.json())
     .then((data) => {
       if (data.success) {
+        setIsModalOpen(false);
+        setStep(1);
+        setCart([]);
         setShowConfirmation(true);
         // Vider le panier après la commande réussie
-        setCart([]);
-        closeProductModal();
       } else {
         console.log('Erreur lors de l\'envoi de la commande:', data.error);
         alert('Une erreur est survenue lors de l\'envoi de la commande. Veuillez réessayer.');

@@ -4,9 +4,9 @@ import { EmailTemplate } from '@/components/email-template';
 import { Resend } from 'resend';
 // Stockage temporaire des commandes en attente de confirmation
 const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-let Devise = "€";
-if (timeZone.includes("Africa")) {
-  Devise = "FCFA";
+let Devise = "FCFA";
+if (!timeZone.includes("Africa")) {
+  Devise = "€";
 }
 const pendingOrders = new Map();//la map
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -29,7 +29,7 @@ export async function POST(request) {
 
     const { emailData, error } = await resend.emails.send({
         from: 'onboarding@resend.dev',
-        to: 'azermax123zale@gmail.com',
+        to: 'Cissreinejosephine@gmail.com',
         subject: "Nouvelle commande à confirmer!",
         react: EmailTemplate({
           name: data.name,
