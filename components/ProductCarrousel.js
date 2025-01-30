@@ -3,6 +3,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import OrderConfirmation from './OrderConfirmation';
 
 const ProductCarrousel = ({ products, options }) => {
   const [emblaRef] = useEmblaCarousel(options);
@@ -10,11 +11,12 @@ const ProductCarrousel = ({ products, options }) => {
   // State pour gérer le panier et l'état du modal
   const [cart, setCart] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isModalProductOpen, setIsModalProductOpen] = useState(false)
+  const [isModalProductOpen, setIsModalProductOpen] = useState(false)
   const [step, setStep] = useState(1); // Étape du modal
   const [selectedProduct, setSelectedProduct] = useState(null)
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
-
+  // Formulaire
   const [formData, setFormData] = useState({
     name: "",
     surname: "",
@@ -81,51 +83,60 @@ const ProductCarrousel = ({ products, options }) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
-  const sendToZapier = async (clientData) => {
-  const response = await fetch('https://hooks.zapier.com/hooks/catch/21477985/2fdxn3p/', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(clientData),
-  });
-
-  const data = await response.json();
-  console.log('Webhook data sent:', data);
-};
 
   // Envoyer les données du panier via WhatsApp
-  const sendToWhatsApp = () => {
+  const sendToWhatsApp = async () => {
     const productDetails = cart
       .map((item) => `${item.name} (x${item.quantity}): ${item.price}`)
       .join("\n");
 
     const message = `Voici ma commande :\n\nProduits :\n${productDetails}\n\nInformations client :\nNom : ${formData.name}\nPrénom : ${formData.surname}\nAdresse : ${formData.address}\nTéléphone : ${formData.phone}`;
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=+33789080132&text=${encodedMessage}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=+221765769486&text=${encodedMessage}`;
 
-  //   const clientData = {
-  //   name: formData.name,
-  //   surname: formData.surname,
-  //   address: formData.address,
-  //   phone: formData.phone,
-  //   products: cart.map(item => ({
-  //     name: item.name,
-  //     quantity: item.quantity,
-  //     price: item.price,
-  //   })),
-  //   totalAmount: cart.reduce((total, item) => total + item.price * item.quantity, 0),
-  // };
+    const clientData = {
+      name: formData.name,
+      surname: formData.surname,
+      address: formData.address,
+      phone: formData.phone,
+      products: cart.map(item => ({
+        name: item.name,
+        quantity: item.quantity,
+        price: item.price
+      })),
+      productQuantity: cart.reduce((total, item) => total + (item.quantity || 0), 0),
+      totalAmount: cart.reduce((total, item) => {
+        const price = parseInt(item.price) || 0;
+        const quantity = Number(item.quantity) || 0;
+        return total + (price * quantity);
+      }, 0),
+      pointFidelite: 1,
+    };
 
-  window.open(whatsappUrl, "_blank");
-  // Envoi des données à Zapier
-  // sendToZapier(clientData)
-  //   .then(() => {
-  //     // Ouvrir WhatsApp une fois les données envoyées à Zapier
-  //   })
-  //   .catch((error) => {
-  //     console.error("Erreur lors de l'envoi des données à Zapier", error);
-  //   });
+    // Envoyer d'abord à notre API de confirmation
+    fetch('/api/orderConfirmation', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(clientData),
+    })
+    .then(response => response.json())
+    .then((data) => {
+      if (data.success) {
+        setShowConfirmation(true);
+        // Vider le panier après la commande réussie
+        setCart([]);
+        closeProductModal();
+      } else {
+        console.log('Erreur lors de l\'envoi de la commande:', data.error);
+        alert('Une erreur est survenue lors de l\'envoi de la commande. Veuillez réessayer.');
+      }
+    })
+    .catch((error) => {
+      console.log('Erreur:', error);
+      alert('Une erreur est survenue. Veuillez réessayer.');
+    });
   };
 
   const closeModal = () => {
@@ -133,15 +144,14 @@ const ProductCarrousel = ({ products, options }) => {
     setStep(1); // Réinitialiser à l'étape 1
   };
 
-   const closeProductModal = () => {
-     setIsModalProductOpen(false)
-   }
+  const closeProductModal = () => {
+    setIsModalProductOpen(false)
+  }
 
   const openProductModal = (product) => {
     setSelectedProduct(product)
     setIsModalProductOpen(true)
-   }
-
+  }
 
   // Désactiver le scroll en arrière-plan lorsque le modal est ouvert
   useEffect(() => {
@@ -461,12 +471,15 @@ const ProductCarrousel = ({ products, options }) => {
                   className="mt-4 w-full px-4 py-2 bg-black text-white rounded hover:bg-gray-900 transition-all duration-300"
                   onClick={sendToWhatsApp}
                 >
-                  Acheter via WhatsApp
+                  Valider votre commande
                 </button>
               </>
             )}
           </div>
         </div>
+      )}
+      {showConfirmation && (
+        <OrderConfirmation onClose={() => setShowConfirmation(false)} />
       )}
     </section>
   )

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev --turbopack -p 3001",
     "build": "npm install --legacy-peer-deps && next build",
     "postbuild": "next-sitemap",
     "start": "next start",
@@ -21,6 +21,7 @@
     "posthog-js": "^1.204.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "resend": "^4.1.1",
     "tailwind-scrollbar": "^3.1.0"
   },
   "devDependencies": {

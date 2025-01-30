@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    optimizeFonts: true, // Optimisation des polices
-  },
+  optimizeFonts: true, // Optimisation des polices
+  experimental: {},
   async headers() {
     return [
       {
