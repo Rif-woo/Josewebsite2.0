@@ -29,7 +29,7 @@ export async function POST(request) {
 
     const { emailData, error } = await resend.emails.send({
         from: 'onboarding@resend.dev',
-        to: 'Cissreinejosephine@gmail.com',
+        to: 'azermax123zale@gmail.com',
         subject: "Nouvelle commande à confirmer!",
         react: EmailTemplate({
           name: data.name,
