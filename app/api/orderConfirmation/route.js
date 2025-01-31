@@ -28,8 +28,8 @@ export async function POST(request) {
     const confirmationLink = `${process.env.NEXT_PUBLIC_SITE_URL}/api/orderConfirmation?orderId=${orderId}`;
 
     const { emailData, error } = await resend.emails.send({
-        from: 'onboarding@resend.dev',
-        to: 'azermax123zale@gmail.com',
+        from: 'Reinoush <send@reinoush.com>',
+        to: 'Cissreinejosephine@gmail.com',
         subject: "Nouvelle commande à confirmer!",
         react: EmailTemplate({
           name: data.name,
