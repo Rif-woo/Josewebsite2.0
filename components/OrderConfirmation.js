@@ -16,30 +16,30 @@ const OrderConfirmation = ({ onClose }) => {
             transition={{ delay: 0.2 }}
             className="inline-block"
           >
-            <svg 
-              className="w-16 h-16 text-green-500 mx-auto" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
+            <svg
+              className="w-16 h-16 text-green-500 mx-auto"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
               strokeWidth="2"
             >
-              <path 
-                d="M22 11.08V12a10 10 0 1 1-5.93-9.14"
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-              <path 
-                d="M22 4L12 14.01l-3-3"
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
+                <path
+                  d="M22 11.08V12a10 10 0 1 1-5.93-9.14"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M22 4L12 14.01l-3-3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
             </svg>
           </motion.div>
-          
+
           <h2 className="text-2xl font-bold mt-4 text-gray-800">
             Commande Envoyée!
           </h2>
-          
+
           <p className="mt-4 text-gray-600">
             Votre commande a été envoyée avec succès. Nous vous contacterons bientôt pour confirmer les détails.
           </p>

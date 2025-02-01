@@ -36,6 +36,7 @@ export async function POST(request) {
           surname: data.surname,
           phone: data.phone,
           address: data.address,
+          deliveryCountry: data.deliveryCountry,
           totalAmount: data.totalAmount,
           productQuantity: data.productQuantity,
           confirmationLink: confirmationLink,

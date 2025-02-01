@@ -22,6 +22,7 @@ const ProductCarrousel = ({ products, options }) => {
     surname: "",
     phone: "",
     address: "",
+    deliveryCountry: "",
   });
 
   // Ajouter un produit au panier
@@ -69,7 +70,8 @@ const ProductCarrousel = ({ products, options }) => {
         !formData.name ||
         !formData.surname ||
         !formData.phone ||
-        !formData.address
+        !formData.address ||
+        !formData.deliveryCountry
       ) {
         alert("Merci de remplir tous les champs.");
         return;
@@ -90,15 +92,16 @@ const ProductCarrousel = ({ products, options }) => {
       .map((item) => `${item.name} (x${item.quantity}): ${item.price}`)
       .join("\n");
 
-    const message = `Voici ma commande :\n\nProduits :\n${productDetails}\n\nInformations client :\nNom : ${formData.name}\nPrénom : ${formData.surname}\nAdresse : ${formData.address}\nTéléphone : ${formData.phone}`;
+    const message = `Voici ma commande :\n\nProduits :\n${productDetails}\n\nInformations client :\nNom : ${formData.name}\nPrénom : ${formData.surname}\nAdresse : ${formData.address}\nTéléphone : ${formData.phone}\nPays de livraison : ${formData.deliveryCountry}`;
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=+221765769486&text=${encodedMessage}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=+33789080132&text=${encodedMessage}`;
 
     const clientData = {
       name: formData.name,
       surname: formData.surname,
       address: formData.address,
       phone: formData.phone,
+      deliveryCountry: formData.deliveryCountry,
       products: cart.map(item => ({
         name: item.name,
         quantity: item.quantity,
@@ -438,6 +441,12 @@ const ProductCarrousel = ({ products, options }) => {
                   onChange={handleInputChange}
                   className="w-full mb-2 px-4 py-2 border rounded-md"
                 />
+                <label htmlFor="deliveryCountry" className="block mb-2">Choisir le pays de livraison:</label>
+                <select id="deliveryCountry" name="deliveryCountry" value={formData.deliveryCountry} onChange={handleInputChange} className="w-full mb-4 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
+                  <option value="">Sélectionnez un pays</option>
+                  <option value="France">France</option>
+                  <option value="Senegal">Sénégal</option>
+                </select>
                 <button
                   className="mt-4 w-full px-4 py-2 bg-black text-white rounded hover:bg-gray-900 transition-all duration-300"
                   onClick={handleContinue}
