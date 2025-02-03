@@ -51,7 +51,7 @@ export async function POST(request) {
     try {
       const emailData = await resend.emails.send({
         from: 'Reinoush <send@reinoush.com>',
-        to: 'nzalecherif@gmail.com',
+        to: 'Cissreinejosephine@gmail.com',
         subject: "Nouvelle commande à confirmer!",
         react: EmailTemplate({
           name: data.name,
@@ -88,7 +88,7 @@ export async function GET(request) {
 
     const { searchParams } = new URL(request.url);
     const orderId = searchParams.get('orderId');
-    
+
     if (!orderId) {
       return NextResponse.json(
         { success: false, message: "id commande non trouvée" },
