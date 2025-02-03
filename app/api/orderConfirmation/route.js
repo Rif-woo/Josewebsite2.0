@@ -99,7 +99,7 @@ export async function GET(request) {
     const orderId = searchParams.get('orderId');
     console.log(orderId);
     if (!orderId) {
-      return NextResponse.json({ success: false, message: "Commande non trouvée" }, { status: 404 });
+      return NextResponse.json({ success: false, message: "id commande non trouvée" }, { status: 404 });
     }
 
     // Read existing orders
