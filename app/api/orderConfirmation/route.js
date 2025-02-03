@@ -97,7 +97,7 @@ export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
     const orderId = searchParams.get('orderId');
-
+    console.log(orderId);
     if (!orderId) {
       return NextResponse.json({ success: false, message: "Commande non trouvée" }, { status: 404 });
     }
