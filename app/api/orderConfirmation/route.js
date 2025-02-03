@@ -1,9 +1,9 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
+import { Resend } from "resend";
+import connectDB from '../../../lib/mongodb';
+import Order from '../../../models/Order';
 import crypto from 'crypto';
-import fs from 'fs';
-import path from 'path';
 import { EmailTemplate } from '@/components/email-template';
-import { Resend } from 'resend';
 
 // Stockage temporaire des commandes en attente de confirmation
 const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -11,11 +11,6 @@ let Devise = "FCFA";
 if (!timeZone.includes("Africa")) {
   Devise = "€";
 }
-
-const ordersFilePath = path.join('./OrderData/orders.json');
-console.log("Order Path: ",ordersFilePath, __dirname);
-
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request) {
   try {
@@ -26,41 +21,35 @@ export async function POST(request) {
     const orderId = crypto.randomBytes(16).toString('hex');
     console.log('Generated orderId:', orderId);
 
-    // Stocker temporairement les données de la commande dans un fichier
+    // Connect to MongoDB
+    await connectDB();
+
+    // Create new order
+    const orderData = {
+      orderId,
+      clientData: data,
+      timestamp: new Date(),
+    };
+
     try {
-      const orderData = {
-        orderId,
-        clientData: data,
-        timestamp: new Date(),
-      };
-
-      // Read existing orders
-      let existingOrders = [];
-      if (fs.existsSync(ordersFilePath)) {
-        const fileData = fs.readFileSync(ordersFilePath);
-        console.log("JSON PARSE: ", fileData.length);
-
-        if (fileData.length == 0) {
-          existingOrders = [];
-        } else {
-
-          existingOrders = JSON.parse(fileData);
-        }
-      }
-
-      // Append new order
-      existingOrders.push(orderData);
-      fs.writeFileSync(ordersFilePath, JSON.stringify(existingOrders, null, 2));
-      console.log('Order stored successfully in file:', orderData);
+      const order = new Order(orderData);
+      await order.save();
+      console.log('Order stored successfully in database:', orderData);
     } catch (error) {
-      console.error('Error storing order in file:', error);
+      console.error('Error storing order in database:', error);
+      return NextResponse.json(
+        { success: false, error: error.message },
+        { status: 500 }
+      );
     }
-    // Cissreinejosephine@gmail.com
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     // Créer le lien de confirmation
     const confirmationLink = `${process.env.NEXT_PUBLIC_SITE_URL}/api/orderConfirmation?orderId=${orderId}`;
 
-    const { emailData, error } = await resend.emails.send({
+    try {
+      const emailData = await resend.emails.send({
         from: 'Reinoush <send@reinoush.com>',
         to: 'nzalecherif@gmail.com',
         subject: "Nouvelle commande à confirmer!",
@@ -78,43 +67,46 @@ export async function POST(request) {
         }),
       });
 
-    if (error) {
-      return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+      console.log("Email sent successfully:", emailData);
+    } catch (error) {
+      console.error("Error sending email:", error);
     }
 
-    return NextResponse.json({
-      success: true,
-      emailData: emailData,
-      message: "URL générée pour la confirmation de la commande"
-    });
+    return NextResponse.json({ success: true, orderId });
   } catch (error) {
-    console.error('Erreur:', error);
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+    console.error("Error processing order:", error);
+    return NextResponse.json(
+      { success: false, error: error.message },
+      { status: 500 }
+    );
   }
 }
 
 export async function GET(request) {
   try {
+    await connectDB();
+
     const { searchParams } = new URL(request.url);
     const orderId = searchParams.get('orderId');
+    
     if (!orderId) {
-      return NextResponse.json({ success: false, message: "id commande non trouvée" }, { status: 404 });
+      return NextResponse.json(
+        { success: false, message: "id commande non trouvée" },
+        { status: 404 }
+      );
     }
 
-    // Read existing orders
-    let existingOrders = [];
-    if (fs.existsSync(ordersFilePath)) {
-      const fileData = fs.readFileSync(ordersFilePath);
-      existingOrders = JSON.parse(fileData);
-    }
-
-    const orderData = existingOrders.find(order => order.orderId === orderId);
+    // Find order in database
+    const orderData = await Order.findOne({ orderId });
 
     if (!orderData) {
-      return NextResponse.json({ success: false, message: "Commande non trouvée" }, { status: 404 });
+      return NextResponse.json(
+        { success: false, message: "Commande non trouvée" },
+        { status: 404 }
+      );
     }
 
-    // Envoyer les données à Zapier
+    // Send data to Zapier
     const zapierResponse = await fetch(process.env.ZAPIER_WEBHOOK_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -125,13 +117,15 @@ export async function GET(request) {
       throw new Error('Erreur lors de l\'envoi à Zapier');
     }
 
-    // Supprimer la commande du stockage temporaire
-    const updatedOrders = existingOrders.filter(order => order.orderId !== orderId);
-    fs.writeFileSync(ordersFilePath, JSON.stringify(updatedOrders, null, 2));
+    // Delete the order from database
+    await Order.deleteOne({ orderId });
 
     return NextResponse.redirect(new URL('/order-confirmation', request.url));
   } catch (error) {
     console.error('Erreur:', error);
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: error.message },
+      { status: 500 }
+    );
   }
 }
