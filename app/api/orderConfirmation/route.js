@@ -12,7 +12,7 @@ if (!timeZone.includes("Africa")) {
   Devise = "€";
 }
 
-const ordersFilePath = path.join('OrderData', 'orders.json');
+const ordersFilePath = path.join('./OrderData/orders.json');
 console.log("Order Path: ",ordersFilePath, __dirname);
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -34,50 +34,24 @@ export async function POST(request) {
         timestamp: new Date(),
       };
 
-      // Ensure the OrderData directory exists
-      const dir = path.dirname(ordersFilePath);
-      try {
-        if (!fs.existsSync(dir)) {
-          fs.mkdirSync(dir, { recursive: true });
-        }
-      } catch (error) {
-        console.error('Error creating directory:', error);
-        return NextResponse.json({ success: false, error: error.message }, { status: 500 });
-      }
-
-      // Ensure the orders.json file exists
-      try {
-        if (!fs.existsSync(ordersFilePath)) {
-          fs.writeFileSync(ordersFilePath, JSON.stringify([])); // Create an empty JSON array
-        }
-      } catch (error) {
-        console.error('Error creating file:', error);
-        return NextResponse.json({ success: false, error: error.message }, { status: 500 });
-      }
-
       // Read existing orders
       let existingOrders = [];
-      try {
+      if (fs.existsSync(ordersFilePath)) {
         const fileData = fs.readFileSync(ordersFilePath);
+        console.log("JSON PARSE: ", fileData.length);
+
         if (fileData.length == 0) {
           existingOrders = [];
         } else {
+
           existingOrders = JSON.parse(fileData);
         }
-      } catch (error) {
-        console.error('Error reading file:', error);
-        return NextResponse.json({ success: false, error: error.message }, { status: 500 });
       }
 
       // Append new order
-      try {
-        existingOrders.push(orderData);
-        fs.writeFileSync(ordersFilePath, JSON.stringify(existingOrders, null, 2));
-        console.log('Order stored successfully in file:', orderData);
-      } catch (error) {
-        console.error('Error writing to file:', error);
-        return NextResponse.json({ success: false, error: error.message }, { status: 500 });
-      }
+      existingOrders.push(orderData);
+      fs.writeFileSync(ordersFilePath, JSON.stringify(existingOrders, null, 2));
+      console.log('Order stored successfully in file:', orderData);
     } catch (error) {
       console.error('Error storing order in file:', error);
     }
@@ -121,27 +95,6 @@ export async function POST(request) {
 
 export async function GET(request) {
   try {
-    // Ensure the OrderData directory exists
-    const dir = path.dirname(ordersFilePath);
-    try {
-      if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true });
-      }
-    } catch (error) {
-      console.error('Error creating directory:', error);
-      return NextResponse.json({ success: false, error: error.message }, { status: 500 });
-    }
-
-    // Ensure the orders.json file exists
-    try {
-      if (!fs.existsSync(ordersFilePath)) {
-        fs.writeFileSync(ordersFilePath, JSON.stringify([])); // Create an empty JSON array
-      }
-    } catch (error) {
-      console.error('Error creating file:', error);
-      return NextResponse.json({ success: false, error: error.message }, { status: 500 });
-    }
-
     const { searchParams } = new URL(request.url);
     const orderId = searchParams.get('orderId');
     if (!orderId) {
@@ -150,12 +103,9 @@ export async function GET(request) {
 
     // Read existing orders
     let existingOrders = [];
-    try {
+    if (fs.existsSync(ordersFilePath)) {
       const fileData = fs.readFileSync(ordersFilePath);
       existingOrders = JSON.parse(fileData);
-    } catch (error) {
-      console.error('Error reading file:', error);
-      return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }
 
     const orderData = existingOrders.find(order => order.orderId === orderId);
@@ -176,13 +126,8 @@ export async function GET(request) {
     }
 
     // Supprimer la commande du stockage temporaire
-    try {
-      const updatedOrders = existingOrders.filter(order => order.orderId !== orderId);
-      fs.writeFileSync(ordersFilePath, JSON.stringify(updatedOrders, null, 2));
-    } catch (error) {
-      console.error('Error writing to file:', error);
-      return NextResponse.json({ success: false, error: error.message }, { status: 500 });
-    }
+    const updatedOrders = existingOrders.filter(order => order.orderId !== orderId);
+    fs.writeFileSync(ordersFilePath, JSON.stringify(updatedOrders, null, 2));
 
     return NextResponse.redirect(new URL('/order-confirmation', request.url));
   } catch (error) {
