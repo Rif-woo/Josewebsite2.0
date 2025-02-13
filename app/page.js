@@ -6,7 +6,6 @@ import ProductShow from "@/components/ProductShow";
 import ProductVideo from "@/components/ProductVideo";
 import { Testimonials } from "@/components/ui/testimonials";
 
-export { TestimonialsDemo };
 export default function Home() {
   return (
    <div>
