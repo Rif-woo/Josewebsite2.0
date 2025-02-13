@@ -10,7 +10,7 @@ const testimonials = [
     quote: "Les garssssss",
     description: "Les gars, désolée si je sens divinement bon ces jours-ci, mais c’est grâce à Reinoush, la meilleure marque de parfum du moment ☺️☺️☺️.",
     author: "Annie Biagui",
-    avatar: "https://github.com/shadcn.png",
+    avatar: "https://example.com/avatar1.png",
     avatarFallback: "AN"
   },
   {
@@ -81,9 +81,9 @@ function Testimonials() {
     }, 4000);
   }, [api, current]);
 
-  
+
   return (
-    <div className="w-full py-20 lg:py-40">
+    <div className="w-full py-20 lg:py-40 max-md:px-5">
       <div className="container mx-auto">
         <div className="flex flex-col gap-10">
           <h2
