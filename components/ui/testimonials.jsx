@@ -16,9 +16,9 @@ const testimonials = [
   {
     quote: "Game Changer",
     description: "Merci beaucoup pour les parfums ! 😍 Chaque flacon est une véritable explosion de joie ! Je suis super contente d’avoir pris les quatre, ils sont tous incroyables. Continue à nous faire découvrir des trésors olfactifs comme ceux-ci !.",
-    author: "Myriame Diame",
+    author: "Annie Biagui",
     avatar: "https://example.com/avatar1.png",
-    avatarFallback: "MD"
+    avatarFallback: "AN"
   },
   {
     quote: "Incredible Solution",
@@ -38,19 +38,13 @@ const testimonials = [
 
   {
     quote: "Incredible Solution",
-    description: "Hello puce j’ai récupéré le parfum hier j’ai trop aimé ton choix 🥰🥰🥰🥰 en plus le cadeau dedans trop cute 🫠🥰.",
-    author: "Marie Thioro Thiaw",
+    description: "Mareine je sens bonnnnnnn Mamaaaaaaa✨🤌🏾.",
+    author: "Myriame Diame",
     avatar: "https://example.com/avatar2.png",
-    avatarFallback: "MT"
+    avatarFallback: "MD"
   },
 
-  {
-    quote: "Incredible Solution",
-    description: "Waaooooouuuuhhhhhh. Quel seennnteuuuuuur 🤩. Tes parfums sont des pépites.Le Mighty mon préféré.",
-    author: "Franck OKE",
-    avatar: "https://example.com/avatar2.png",
-    avatarFallback: "FO"
-  },
+
 
   {
     quote: "Incredible Solution",
