@@ -99,10 +99,10 @@ function Testimonials() {
                     <User className="w-8 h-8 stroke-1" />
                     <div className="flex flex-col gap-4">
                       <div className="flex flex-col">
-                        <h3 className="text-xl tracking-tight">
+                        <h3 className="text-xl tracking-tight max-md:text-base">
                           {testimonial.author}
                         </h3>
-                        <p className="text-muted-foreground max-w-xs text-base">
+                        <p className="text-muted-foreground max-w-xs text-base max-md:text-sm ">
                           {testimonial.description}
                         </p>
                       </div>
