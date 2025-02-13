@@ -4,14 +4,17 @@ import Footer from "@/components/footer";
 import Header from "@/components/Header";
 import ProductShow from "@/components/ProductShow";
 import ProductVideo from "@/components/ProductVideo";
+import { Testimonials } from "@/components/ui/testimonials";
 
+export { TestimonialsDemo };
 export default function Home() {
   return (
    <div>
     <Header />
     <ProductShow />
     <ProductVideo/>
-    <AboutUs/>
+    <AboutUs />
+    <Testimonials />
     <ContactSection />
     <Footer />
    </div>
