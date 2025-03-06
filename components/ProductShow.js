@@ -15,6 +15,8 @@ const PRODUCTS = [
     typeParfum: 'Parfum Femme',
     description: 'Un parfum à la fois raffiné, élégant.',
     image: '/Grace.webp',
+    innitialPrice: "5000 FCFA",
+    showInnitialPrice: false,
   },
   {
     id: 2,
@@ -22,6 +24,8 @@ const PRODUCTS = [
     typeParfum: 'Parfum Femme',
     description: 'Un parfum féminin, unique avec une note sucrée miel.',
     image: '/coco.webp',
+    innitialPrice: "5000 FCFA",
+    showInnitialPrice: false,
   },
   {
     id: 3,
@@ -30,6 +34,8 @@ const PRODUCTS = [
     description:
       "une caractéristique sucrée ainsi qu'un aspect très masculin avec ses notes fumées et boisées, sans être agressif.",
     image: '/Favor.webp',
+    innitialPrice: "5000 FCFA",
+    showInnitialPrice: false,
   },
   {
     id: 4,
@@ -38,6 +44,8 @@ const PRODUCTS = [
     description:
       "un parfum qui peut surprendre de par ses notes de poire, menthe alliée à la cannelle, la vanille et l'ambre",
     image: '/Mighty.webp',
+    innitialPrice: "5000 FCFA",
+    showInnitialPrice: false,
   },
   {
     id: 5,
@@ -46,6 +54,8 @@ const PRODUCTS = [
     description:
       'un parfum qui incarne à la perfection l’élégance intemporelle et la grâce céleste.',
     image: '/Divine.webp',
+    innitialPrice: "5000 FCFA",
+    showInnitialPrice: false,
   },
 ]
 

@@ -4,8 +4,18 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import OrderConfirmation from './OrderConfirmation';
+const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+
 
 const ProductCarrousel = ({ products, options }) => {
+  let showPrice = false;
+  products.forEach(product => {
+  if (timeZone.includes("Africa")) {
+    showPrice = true
+  }
+  product.showInnitialPrice = showPrice;
+});
   const [emblaRef] = useEmblaCarousel(options);
 
   // State pour gérer le panier et l'état du modal
@@ -210,9 +220,16 @@ const ProductCarrousel = ({ products, options }) => {
                   <p className="text-[#181818] text-sm sm:text-md xl:max-[1515px]:text-xs font-semibold">
                     {product.typeParfum}
                   </p>
-                  <p className="text-[#181818] text-sm sm:text-md xl:max-[1515px]:text-xs font-semibold">
-                    {product.price}
-                  </p>
+                  <div className='flex gap-2'>
+                    {(product.showInnitialPrice && product.typeParfum === "Parfum Femme")&& (
+                      <p className="text-[#9c9c9c] text-sm sm:text-md xl:max-[1515px]:text-xs font-medium line-through">
+                        {product.innitialPrice}
+                      </p>
+                    )}
+                    <p className="text-[#181818] text-sm sm:text-md xl:max-[1515px]:text-xs font-semibold">
+                      {product.price}
+                    </p>
+                  </div>
                 </div>
                 <motion.button
                   className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-sm font-bold rounded hover:bg-gray-600"
