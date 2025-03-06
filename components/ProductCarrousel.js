@@ -15,6 +15,7 @@ const ProductCarrousel = ({ products, options }) => {
   const [step, setStep] = useState(1); // Étape du modal
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
 
   // Formulaire
   const [formData, setFormData] = useState({
@@ -141,6 +142,13 @@ const ProductCarrousel = ({ products, options }) => {
       console.log('Erreur:', error);
       alert('Une erreur est survenue. Veuillez réessayer.');
     });
+  };
+
+  const handleButtonClick = () => {
+    if (!isButtonClicked) {
+      sendToWhatsApp();
+      setIsButtonClicked(true);
+    }
   };
 
   const closeModal = () => {
@@ -479,7 +487,8 @@ const ProductCarrousel = ({ products, options }) => {
                 </div>
                 <button
                   className="mt-4 w-full px-4 py-2 bg-black text-white rounded hover:bg-gray-900 transition-all duration-300"
-                  onClick={sendToWhatsApp}
+                  onClick={handleButtonClick}
+                  disabled={isButtonClicked}
                 >
                   Valider votre commande
                 </button>

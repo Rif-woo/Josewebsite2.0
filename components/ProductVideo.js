@@ -49,7 +49,7 @@ export default function ProductVideo() {
                 <button
                   className="flex items-center justify-center px-2 py-2 bg-[#181818] text-white text-xs font-bold rounded hover:bg-gray-800"
                   onClick={() => {
-                    const message = `Coco Jojo (x1): ${price}`
+                    const message = `Coco Jojo (x1): 4000 FCFA`
                     const encodedMessage = encodeURIComponent(
                       `Voici ma commande :\n${message}`
                     )

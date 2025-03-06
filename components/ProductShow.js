@@ -6,10 +6,48 @@ import ProductCarrousel from "./ProductCarrousel";
 
 const OPTIONS = {}; // Configuration de Embla (ex: { loop: true })
 const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-let price = "20 €";
-if (timeZone.includes("Africa")) {
-  price = "5000 FCFA";
-}
+
+// Liste des produits avec leurs données
+const PRODUCTS = [
+  {
+    id: 1,
+    name: 'Grâce',
+    typeParfum: 'Parfum Femme',
+    description: 'Un parfum à la fois raffiné, élégant.',
+    image: '/Grace.webp',
+  },
+  {
+    id: 2,
+    name: 'Coco Jojo',
+    typeParfum: 'Parfum Femme',
+    description: 'Un parfum féminin, unique avec une note sucrée miel.',
+    image: '/coco.webp',
+  },
+  {
+    id: 3,
+    name: 'Favor',
+    typeParfum: 'Parfum Homme',
+    description:
+      "une caractéristique sucrée ainsi qu'un aspect très masculin avec ses notes fumées et boisées, sans être agressif.",
+    image: '/Favor.webp',
+  },
+  {
+    id: 4,
+    name: 'Mighty',
+    typeParfum: 'Parfum Homme',
+    description:
+      "un parfum qui peut surprendre de par ses notes de poire, menthe alliée à la cannelle, la vanille et l'ambre",
+    image: '/Mighty.webp',
+  },
+  {
+    id: 5,
+    name: 'Divine',
+    typeParfum: 'Parfum Femme',
+    description:
+      'un parfum qui incarne à la perfection l’élégance intemporelle et la grâce céleste.',
+    image: '/Divine.webp',
+  },
+]
 
 const phrases = [
 
@@ -23,52 +61,17 @@ const phrases = [
 
 ]
 
-// Liste des produits avec leurs données
-const PRODUCTS = [
-  {
-    id: 1,
-    name: 'Grâce',
-    price: price,
-    typeParfum: 'Parfum Femme',
-    description: 'Un parfum à la fois raffiné, élégant.',
-    image: '/Grace.webp',
-  },
-  {
-    id: 2,
-    name: 'Coco Jojo',
-    price: price,
-    typeParfum: 'Parfum Femme',
-    description: 'Un parfum féminin, unique avec une note sucrée miel.',
-    image: '/coco.webp',
-  },
-  {
-    id: 3,
-    name: 'Favor',
-    price: price,
-    typeParfum: 'Parfum Homme',
-    description:
-      "une caractéristique sucrée ainsi qu'un aspect très masculin avec ses notes fumées et boisées, sans être agressif.",
-    image: '/Favor.webp',
-  },
-  {
-    id: 4,
-    name: 'Mighty',
-    price: price,
-    typeParfum: 'Parfum Homme',
-    description:
-      "un parfum qui peut surprendre de par ses notes de poire, menthe alliée à la cannelle, la vanille et l'ambre",
-    image: '/Mighty.webp',
-  },
-  {
-    id: 5,
-    name: 'Divine',
-    price: price,
-    typeParfum: 'Parfum Femme',
-    description:
-      'un parfum qui incarne à la perfection l’élégance intemporelle et la grâce céleste.',
-    image: '/Divine.webp',
-  },
-]
+PRODUCTS.forEach(product => {
+  let price = "20 €";
+  if (timeZone.includes("Africa")) {
+    if (product.typeParfum === "Parfum Femme") {
+      price = "4000 FCFA";
+    } else {
+      price = "5000 FCFA";
+    }
+  }
+  product.price = price;
+});
 
 export default function ProductShow() {
 //768 - 1280
