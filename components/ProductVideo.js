@@ -17,6 +17,7 @@ export default function ProductVideo() {
         Sélection du Moment
       </h2>
 
+      
       {/* Cards with animation */}
       <MaskVideo>
         {/* Card 1 - Tendances */}
