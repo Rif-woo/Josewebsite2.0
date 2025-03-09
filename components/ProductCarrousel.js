@@ -12,7 +12,7 @@ const ProductCarrousel = ({ products, options }) => {
   let showPrice = false;
   products.forEach(product => {
   if (timeZone.includes("Africa")) {
-    showPrice = true
+    showPrice = false
   }
   product.showInnitialPrice = showPrice;
 });

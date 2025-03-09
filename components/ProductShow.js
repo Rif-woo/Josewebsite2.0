@@ -75,7 +75,7 @@ PRODUCTS.forEach(product => {
   let price = "20 €";
   if (timeZone.includes("Africa")) {
     if (product.typeParfum === "Parfum Femme") {
-      price = "4000 FCFA";
+      price = "5000 FCFA";
     } else {
       price = "5000 FCFA";
     }
