@@ -4,6 +4,8 @@ import Head from "next/head";
 import React, { Suspense } from 'react';
 import GoogleAnalytics from '@/components/google-analytics';
 import { PostHogProvider } from './providers';
+import geoip from 'geoip-lite';
+import { headers } from 'next/headers';
 
 export const metadata = {
   title: "Reinoush",
@@ -11,15 +13,23 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  // Récupération des headers (IP) côté serveur
+  // const hdrs = headers();
+  // const ip = hdrs.get('x-forwarded-for')?.split(',')[0]
+  //          ?? hdrs.get('x-real-ip')
+  //          ?? '127.0.0.1';
+  // // Lookup géolocalisation
+  // const geo = geoip.lookup(ip) || {};
+  // const showPrice = geo.continent === 'AF';
+  // console.log(geo)
+
   return (
     <html lang="en">
       <Suspense fallback={null}>
         <GoogleAnalytics
           GA_MEASUREMENT_ID={
-            (
-              process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,
-              process.env.NEXT_PUBLIC_ANALYTICS_MEASUREMENT_ID
-            )
+            process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID 
+            || process.env.NEXT_PUBLIC_ANALYTICS_MEASUREMENT_ID
           }
         />
       </Suspense>
@@ -30,7 +40,7 @@ export default function RootLayout({ children }) {
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <body>
+      <body data-show-price={showPrice ? '1' : '0'}>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-KGZLPQ8C"
@@ -45,5 +55,5 @@ export default function RootLayout({ children }) {
         </PostHogProvider>
       </body>
     </html>
-  )
+  );
 }

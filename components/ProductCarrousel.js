@@ -12,8 +12,9 @@ const ProductCarrousel = ({ products, options }) => {
   let showPrice = false;
   products.forEach(product => {
   if (timeZone.includes("Africa")) {
-    showPrice = false
+    showPrice = true
   }
+  
   product.showInnitialPrice = showPrice;
 });
   const [emblaRef] = useEmblaCarousel(options);
@@ -185,9 +186,9 @@ const ProductCarrousel = ({ products, options }) => {
   }, [isModalOpen]);
 
   return (
-    <section className="embla w-full h-full overflow-hidden">
-      <div className="embla__viewport h-full" ref={emblaRef}>
-        <div className="embla__container flex gap-4">
+    <section className="w-full h-full overflow-hidden embla">
+      <div className="h-full embla__viewport" ref={emblaRef}>
+        <div className="flex gap-4 embla__container">
           {products.map((product) => (
             <div
               className="embla__slide flex flex-col items-center
@@ -212,7 +213,7 @@ const ProductCarrousel = ({ products, options }) => {
                   quality={75}
                 />
               </motion.div>
-              <div className="flex w-full justify-between items-center mt-4 px-2">
+              <div className="flex items-center justify-between w-full px-2 mt-4">
                 <div className="flex flex-col gap-1">
                   <h3 className="text-[#000000] text-sm sm:text-base xl:max-[1515px]:text-sm font-normal">
                     {product.name}
@@ -221,7 +222,7 @@ const ProductCarrousel = ({ products, options }) => {
                     {product.typeParfum}
                   </p>
                   <div className='flex gap-2'>
-                    {(product.showInnitialPrice && product.typeParfum === "Parfum Femme")&& (
+                    {(product.showInnitialPrice)&& (
                       <p className="text-[#9c9c9c] text-sm sm:text-md xl:max-[1515px]:text-xs font-medium line-through">
                         {product.innitialPrice}
                       </p>
@@ -257,7 +258,7 @@ const ProductCarrousel = ({ products, options }) => {
         <AnimatePresence>
           {isModalProductOpen && (
             <motion.div
-              className="fixed inset-0 z-50 p-6 flex items-center justify-center bg-black/50"
+              className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/50"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -266,7 +267,7 @@ const ProductCarrousel = ({ products, options }) => {
               }}
             >
               <motion.div
-                className="bg-white rounded-lg p-6 w-full max-w-lg sm:max-w-xl relative"
+                className="relative w-full max-w-lg p-6 bg-white rounded-lg sm:max-w-xl"
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: 50, opacity: 0 }}
@@ -292,19 +293,19 @@ const ProductCarrousel = ({ products, options }) => {
                   />
                 </motion.button>
                 {/* Contenu du modal */}
-                <div className="flex flex-col mt-2 sm:flex-row sm:gap-4 items-center sm:items-start w-full">
+                <div className="flex flex-col items-center w-full mt-2 sm:flex-row sm:gap-4 sm:items-start">
                   <Image
                     src={selectedProduct.image}
                     alt={selectedProduct.name}
                     width={300}
                     height={300}
-                    className="rounded-lg mb-4 sm:mb-0"
+                    className="mb-4 rounded-lg sm:mb-0"
                   />
-                  <div className="w-full flex flex-col items-start gap-3">
+                  <div className="flex flex-col items-start w-full gap-3">
                     <h3 className="text-xl font-medium text-black xl:max-[1400px]:text-xl">
                       {selectedProduct.name}
                       <br />
-                      <span className="text-xs text-gray-600 font-bold">
+                      <span className="text-xs font-bold text-gray-600">
                         {selectedProduct.typeParfum}
                       </span>
                     </h3>
@@ -348,8 +349,8 @@ const ProductCarrousel = ({ products, options }) => {
           >
             {step === 1 && (
               <>
-                <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-lg sm:text-3xl font-medium text-black">
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-lg font-medium text-black sm:text-3xl">
                     Votre Panier
                   </h2>
                   <button
@@ -371,10 +372,10 @@ const ProductCarrousel = ({ products, options }) => {
                   {cart.map((item) => (
                     <li
                       key={item.id}
-                      className="flex items-center justify-between border-b pb-2"
+                      className="flex items-center justify-between pb-2 border-b"
                     >
                       <div className="flex items-center gap-2">
-                        <div className="w-12 h-12 relative">
+                        <div className="relative w-12 h-12">
                           <Image
                             src={item.image}
                             alt={item.name}
@@ -387,15 +388,15 @@ const ProductCarrousel = ({ products, options }) => {
                           {item.name} (x{item.quantity})
                         </span>
                       </div>
-                      <div className="flex gap-2 items-center">
+                      <div className="flex items-center gap-2">
                         <button
-                          className="text-white bg-green-500 px-2 rounded"
+                          className="px-2 text-white bg-green-500 rounded"
                           onClick={() => incrementQuantity(item.id)}
                         >
                           +
                         </button>
                         <button
-                          className="text-white bg-red-500 px-2 rounded"
+                          className="px-2 text-white bg-red-500 rounded"
                           onClick={() => decrementQuantity(item.id)}
                         >
                           -
@@ -405,7 +406,7 @@ const ProductCarrousel = ({ products, options }) => {
                   ))}
                 </ul>
                 <button
-                  className="mt-4 w-full px-4 py-2 bg-black text-white rounded hover:bg-gray-900 transition-all duration-300"
+                  className="w-full px-4 py-2 mt-4 text-white transition-all duration-300 bg-black rounded hover:bg-gray-900"
                   onClick={handleContinue}
                 >
                   Continuer
@@ -415,8 +416,8 @@ const ProductCarrousel = ({ products, options }) => {
 
             {step === 2 && (
               <>
-                <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-lg sm:text-3xl font-medium text-black">
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-lg font-medium text-black sm:text-3xl">
                     Informations Client
                   </h2>
                   <button
@@ -440,7 +441,7 @@ const ProductCarrousel = ({ products, options }) => {
                   placeholder="Nom"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full mb-2 px-4 py-2 border rounded-md"
+                  className="w-full px-4 py-2 mb-2 border rounded-md"
                 />
                 <input
                   type="text"
@@ -448,7 +449,7 @@ const ProductCarrousel = ({ products, options }) => {
                   placeholder="Prénom"
                   value={formData.surname}
                   onChange={handleInputChange}
-                  className="w-full mb-2 px-4 py-2 border rounded-md"
+                  className="w-full px-4 py-2 mb-2 border rounded-md"
                 />
                 <input
                   type="text"
@@ -456,7 +457,7 @@ const ProductCarrousel = ({ products, options }) => {
                   placeholder="Téléphone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className="w-full mb-2 px-4 py-2 border rounded-md"
+                  className="w-full px-4 py-2 mb-2 border rounded-md"
                 />
                 <input
                   type="text"
@@ -464,16 +465,16 @@ const ProductCarrousel = ({ products, options }) => {
                   placeholder="Adresse"
                   value={formData.address}
                   onChange={handleInputChange}
-                  className="w-full mb-2 px-4 py-2 border rounded-md"
+                  className="w-full px-4 py-2 mb-2 border rounded-md"
                 />
                 <label htmlFor="deliveryCountry" className="block mb-2">Choisir le pays de livraison:</label>
-                <select id="deliveryCountry" name="deliveryCountry" value={formData.deliveryCountry} onChange={handleInputChange} className="w-full mb-4 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
+                <select id="deliveryCountry" name="deliveryCountry" value={formData.deliveryCountry} onChange={handleInputChange} className="w-full px-4 py-2 mb-4 bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                   <option value="">Sélectionnez un pays</option>
                   <option value="France">France</option>
                   <option value="Senegal">Sénégal</option>
                 </select>
                 <button
-                  className="mt-4 w-full px-4 py-2 bg-black text-white rounded hover:bg-gray-900 transition-all duration-300"
+                  className="w-full px-4 py-2 mt-4 text-white transition-all duration-300 bg-black rounded hover:bg-gray-900"
                   onClick={handleContinue}
                 >
                   Continuer
@@ -483,8 +484,8 @@ const ProductCarrousel = ({ products, options }) => {
 
             {step === 3 && (
               <>
-                <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-lg sm:text-3xl font-medium text-black">
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-lg font-medium text-black sm:text-3xl">
                     Paiement
                   </h2>
                   <button
@@ -503,7 +504,7 @@ const ProductCarrousel = ({ products, options }) => {
                   </button>
                 </div>
                 <button
-                  className="mt-4 w-full px-4 py-2 bg-black text-white rounded hover:bg-gray-900 transition-all duration-300"
+                  className="w-full px-4 py-2 mt-4 text-white transition-all duration-300 bg-black rounded hover:bg-gray-900"
                   onClick={handleButtonClick}
                   disabled={isButtonClicked}
                 >

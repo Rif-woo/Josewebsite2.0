@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack -p 3001",
+    "dev": "next dev --turbopack -p 3002",
     "build": "npm install --legacy-peer-deps && next build",
     "postbuild": "next-sitemap",
     "start": "next start",
@@ -22,6 +22,7 @@
     "embla-carousel-react": "^8.5.2",
     "express": "^4.21.2",
     "framer-motion": "^11.15.0",
+    "geoip-lite": "^1.4.10",
     "lucide-react": "^0.475.0",
     "mongoose": "^8.9.6",
     "motion": "^11.15.0",

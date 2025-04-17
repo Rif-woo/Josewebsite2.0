@@ -16,7 +16,7 @@ const PRODUCTS = [
     description: 'Un parfum à la fois raffiné, élégant.',
     image: '/Grace.webp',
     innitialPrice: "5000 FCFA",
-    showInnitialPrice: false,
+    showInnitialPrice: true,
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const PRODUCTS = [
     description: 'Un parfum féminin, unique avec une note sucrée miel.',
     image: '/coco.webp',
     innitialPrice: "5000 FCFA",
-    showInnitialPrice: false,
+    showInnitialPrice: true,
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ const PRODUCTS = [
       "une caractéristique sucrée ainsi qu'un aspect très masculin avec ses notes fumées et boisées, sans être agressif.",
     image: '/Favor.webp',
     innitialPrice: "5000 FCFA",
-    showInnitialPrice: false,
+    showInnitialPrice: true,
   },
   {
     id: 4,
@@ -45,7 +45,7 @@ const PRODUCTS = [
       "un parfum qui peut surprendre de par ses notes de poire, menthe alliée à la cannelle, la vanille et l'ambre",
     image: '/Mighty.webp',
     innitialPrice: "5000 FCFA",
-    showInnitialPrice: false,
+    showInnitialPrice: true,
   },
   {
     id: 5,
@@ -55,7 +55,7 @@ const PRODUCTS = [
       'un parfum qui incarne à la perfection l’élégance intemporelle et la grâce céleste.',
     image: '/Divine.webp',
     innitialPrice: "5000 FCFA",
-    showInnitialPrice: false,
+    showInnitialPrice: true,
   },
 ]
 
@@ -73,17 +73,22 @@ const phrases = [
 
 PRODUCTS.forEach(product => {
   let price = "20 €";
+  // const showPrice = document
+  //   ?.querySelector('body')
+  //   ?.getAttribute('data-show-price') === '1';
   if (timeZone.includes("Africa")) {
-    if (product.typeParfum === "Parfum Femme") {
-      price = "5000 FCFA";
-    } else {
-      price = "5000 FCFA";
-    }
+    // if (product.typeParfum === "Parfum Femme") {
+    //   price = "5000 FCFA";
+    // } else {
+    //   price = "5000 FCFA";
+    // }
+    price = "4000 FCFA"
   }
   product.price = price;
 });
 
 export default function ProductShow() {
+  
 //768 - 1280
   return (
     <div className="w-full h-[650px] min-[768px]:max-[1280px]:h-[750px] flex flex-col md:flex-row min-[768px]:max-[1280px]:flex-col items-center min-[768px]:max-[1280px]:items-center min-[768px]:max-[1280px]:justify-center md:items-start justify-center pt-11 ">
@@ -99,13 +104,13 @@ export default function ProductShow() {
 
       {/* Carrousel des produits */}
       <ProductCarrousel products={PRODUCTS} options={OPTIONS} />
-      <div className="relative md:hidden size-14 flex flex-col items-center justify-center bg-transparent">
+      <div className="relative flex flex-col items-center justify-center bg-transparent md:hidden size-14">
       <Image
         src="/anim2.gif"
         alt="Header background"
         fill
         unoptimized
-        className="opacity-50 object-cover z-0"
+        className="z-0 object-cover opacity-50"
         draggable="false"
       />
         <p className="w-[250px] text-center text-black mt-16">Swipe pour voir plus</p>
