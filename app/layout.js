@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <body data-show-price={showPrice ? '1' : '0'}>
+      <body>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-KGZLPQ8C"
