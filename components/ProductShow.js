@@ -82,7 +82,7 @@ PRODUCTS.forEach(product => {
     // } else {
     //   price = "5000 FCFA";
     // }
-    price = "4000 FCFA"
+    price = "5000 FCFA"
   }
   product.price = price;
 });
